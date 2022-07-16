@@ -1,12 +1,75 @@
-hello world
-
 <script src="typograms.js"></script>
 <link rel="stylesheet" href="typograms.css"></link>
 
-hello
-
-<script type="text/typogram">
---->|
+<script>
+customElements.define("typo-gram", class Typogram extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    console.log("hello");
+    console.log(this.innerHTML);
+  }
+});
 </script>
 
-world
+<typo-gram>
+</typo-gram>
+
+Line ends:
+<br>
+<script type="text/typogram">
+o-o *-o        * o  o o o o  * * * *  o o o o  * * * *     o o o o  * * * *
+o-* *-*  v  v  ^ ^  | | | |  | | | |   \ \ \ \  \ \ \ \   / / / /  / / / /
+o-> *-> *  o        o * v    o * v      o * v    o * v   o * v    o * v  
+o-  *-              
+
+^ ^  * o  |  |                           ^ ^ ^ ^             ^ ^ ^
+| |  ^ ^  v  v   *  o   ^ ^ ^ ^  | | | |  \ \ \ \  \ \ \ \  / / /  / / / /
+* o  | |  *  o   ^  ^  o * v     o * v     o * v    o * v  o * v  o * v 
+  
+<-o <-* <-> <-                   -o -* -> -- *<- o<- ->o ->*
+
+    \ | /
+ \   vvv   /           \ | /
+  v+-----+v             vvv
+ ->|     |<-           ->*<-
+  ^+-----+^             ^^^
+ /   ^^^   \           / | \
+    / | \
+  
+</script>
+
+<br>
+Graph with small nodes:
+<br>
+<script type="text/typogram">
+A   1    2   4                 8
+*-->o<-->o<--o---------.       o
+         ^   ^         |       ^
+         |   |         v       |
+         o<->*<-->o--->*-->o-->o<-->*
+         3   B    5    C   6   7    D
+</script>
+
+<br>
+Trees:
+<br>
+<script type="text/typogram">
+                                   +-- 1            1
+     /\             |           +--+              / 
+    /  \        +---+---+       |  +-- 2         /\ 2
+   /    \       |       |     --+               /  
+  /\    /\    +-+-+   +-+-+     |  +-- 3        \   3
+ /  \  /  \   |   |   |   |     +--+             \/  
+1   2  3   4  1   2   3   4        +-- 4          \ 4
+
+
+    X            Y
+   / \          / \
+  A   Y   ->   X   C
+     / \      / \
+    B   C    A   B
+
+</script>
+<br>

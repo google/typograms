@@ -169,7 +169,7 @@ glyphs["*"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
       "http://www.w3.org/2000/svg", "circle");
   circle.setAttribute("cx", "0");
   circle.setAttribute("cy", "0");
-  circle.setAttribute("r", "14");
+  circle.setAttribute("r", "21");
   circle.setAttribute("stroke", "none");
   circle.setAttribute("transform", "translate(15, 27)");
   result.appendChild(circle);
@@ -195,7 +195,7 @@ glyphs["o"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
       "http://www.w3.org/2000/svg", "circle");
   circle.setAttribute("cx", "0");
   circle.setAttribute("cy", "0");
-  circle.setAttribute("r", "9");
+  circle.setAttribute("r", "18");
   circle.setAttribute("stroke-width", "6");
   circle.setAttribute("fill", "none");
   circle.setAttribute("stroke", "black");
@@ -219,7 +219,7 @@ glyphs["o"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
       "http://www.w3.org/2000/svg", "circle");
   inner.setAttribute("cx", "0");
   inner.setAttribute("cy", "0");
-  inner.setAttribute("r", "6");
+  inner.setAttribute("r", "15");
   inner.setAttribute("fill", "white");
   inner.setAttribute("opacity", "100%");
   inner.setAttribute("transform", "translate(15, 27)");

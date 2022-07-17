@@ -2,6 +2,8 @@
  <script src="typograms.js"></script>
  <link rel="stylesheet" href="typograms.css"></link>
  <link href="google-sans.css" media="screen" rel="stylesheet" type="text/css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
  <style>
    html, body, .header {
        margin: 0;
@@ -48,6 +50,10 @@
        position: fixed;
        padding: 4em;
    }
+
+   pre code.hljs {
+       padding: 0 1em;
+   }
  </style>
 </head>
 
@@ -79,12 +85,39 @@
       <li><a href="#scribbles">Scribbles</a></li>
     </ul>
 
-    <a href="#specification">Specification</a>
+    <a href="#related">Related Work</a>
+    <br><br><a href="#specification">Specification</a>
   </div>
   <main>
 
     <h1 id="introduction">Introduction</h1>
+
+    <p>Typograms (typographic diagrams) is an <a href="https://en.wikipedia.org/wiki/ASCII_art">ASCII</a>-oriented image format (<code>text/typograms</code>) useful for defining simple diagrams.</p>
+
+    <p>It defines a small set of <a href="#primitives">primitives</a> and rules to connect them, which you can use to build larger <a href="#examples">diagrams</a>.</p>
+
+    <p>A <a href="#installation">polyfill</a> is available that allows you use to use it in browsers.</p>
+
+    <p>A comparison with <a href="#related">related</a> work is available below.</p>
+
     <h1 id="installation">Installation</h1>
+
+    To get started, the easiest way to use typograms is to link from our CDN:
+
+    <pre>
+      <code class="language-html">
+&lt;script src="https://code.sgo.to/typograms/typograms.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" href="https://code.sgo.to/typograms/typograms.css"&gt;&lt;/link&gt;
+&lt;script type="text/typogram"&gt;
++----+
+|    |--->* My first diagram!
++----+
+&lt;/script&gt;
+      </code>
+    </pre>
+
+    From there, you can <a href="https://github.com/samuelgoto/typograms">download</a> the library directly to serve yourself.
+    
     <h1 id="primitives">Primitives</h1>
     
     <h2 id="pipes">Pipes and connectors</h2>
@@ -395,6 +428,14 @@ A   1    2   4                 8
     </script>   
 
 
+    <h1 id="related">Related Work</h1>
+
+    <p>The closest work to typograms is <a href="https://github.com/ivanceras/svgbob">svgbob</a>: it renders diagrams from ASCII and works in browsers (through a webassembly port which spits out SVGs). It supports a similar set of features (with the notable exception of its support for circle drawing) and picks a similar set of typographic conventions (with the notable exception of text rendering). It is well-<a href="https://ivanceras.github.io/content/Svgbob/Specification.html">specified</a>. I ran into enough challenges with (a) the text rendering and (b) running in the browser through the webassembly port that motivated me to rewrite it in JS (svgbob is written in rust), but is otherwise a perfectly valid (more mature) alternative.</p>
+    
+    <p>From there, there is a series of projects that rendered images from ASCII diagrams but weren't either (a) particularly good to be used in isolation or (b) on webpages: <a href="https://github.com/asciitosvg/asciitosvg">asciitosvg</a>, <a href="http://ditaa.sourceforge.net/">ditaa</a> and <a href="https://casual-effects.com/markdeep/features.md.html">markdeep</a> most notably.</p>
+
+    <p>Unlike libraries like <a href="https://github.com/mermaid-js/mermaid">mermaid</a>, typograms are defined typographically (WYSWYG), rather than semantically (a transformation from a high level description to graphics), which picks a different trade-off: it gives you more control over the rendering (expressivity) at the cost of making you type more (productivity).</p>
+    
     <h1 id="specification">Specification</h1>
     
     <br>
@@ -415,3 +456,11 @@ customElements.define("typo-gram", class Typogram extends HTMLElement {
 
   </main>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('pre code').forEach((el) => {
+    hljs.highlightElement(el);
+  });
+});
+</script>

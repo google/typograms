@@ -1,10 +1,82 @@
-<script src="typograms.js"></script>
-<link rel="stylesheet" href="typograms.css"></link>
+<head>
+ <script src="typograms.js"></script>
+ <link rel="stylesheet" href="typograms.css"></link>
+ <style>
+   html, body, .header {
+       margin: 0;
+       padding: 0;
+   }
+   .header {
+       box-shadow: 0 2px 6px 0 rgb(0 0 0 / 12%), inset 0 -1px 0 0 #dadce0;
+       padding: 1em;
+       position: fixed;
+       width: 100%;
+       top: 0;
+       background-color: white;
+       z-index: 1;
+       height: 32px;
+   }
+   .body {
+       margin: auto;
+       position: absolute;
+       overflow-y: scroll;
+       top: 64px;
+       bottom: 0px;
+       right: 0px;
+       left: 0px;
+       outline: none;
+       background-color: white;
+   }
+   main {
+       max-width: 740px;
+       margin: auto;
+       margin-bottom: 4em;
+       margin-top: 4em;
+   }
+   .menu {
+       position: fixed;
+       padding: 4em;
+   }
+ </style>
+</head>
 
-<br>
-Pipes and connectors
-<br>
-<script type="text/typogram">
+<div class="header">
+</div>
+<div class="body">
+  <div class="menu">
+    <br><a href="#introduction">Introduction</a>
+    <br>
+    <br><a href="#primitives">Primitives</a>
+    <ol>
+      <li><a href="#pipes">Pipes and connectors</a></li>
+      <li><a href="#endings">Endings</a></li>
+      <li><a href="#arrows">Arrows</a></li>
+    </ol>
+
+    <br><a href="#examples">Examples</a>
+    <ul>
+      <li><a href="#protocols">Protocols</a></li>
+      <li><a href="#icons">Icons</a></li>
+      <li><a href="#tables">Tables</a></li>
+      <li><a href="#flowcharts">Flowchats</a></li>
+      <li><a href="#trees">Trees</a></li>
+      <li><a href="#shapes">Shapes</a></li>
+      <li><a href="#grids">Grids</a></li>
+      <li><a href="#series">Time series</a></li>
+      <li><a href="#plots">Plots</a></li>
+      <li><a href="#scribbles">Scribbles</a></li>
+    </ul>
+  </div>
+  <main>
+
+    <h1 id="introduction">Introduction</h1>
+    <h1 id="primitives">Primitives</h1>
+    
+    <br>
+    Pipes and connectors
+    <br>
+    <script type="text/typogram">
+
   +- -+  -+ +-  |   |   | |   -+-  |    /  \  \     /  +-  -+  +- -+    +   \ /   \   /
   |   |   | |   +- -+  -+ +-   |  -+-  +-  -+  +- -+    \  /  /     \  / \   +     + +
                                                                                   /   \
@@ -30,80 +102,97 @@ Pipes and connectors
    __   .-.    .-.   |   |   /  \
   (__) ( 1 )  |   |   '-'   +)  (+
         '-'                  \  /
-</script>
+    </script>
 
-<br>
-Line endings:
-<br>
-<script type="text/typogram">
+    <br>
+    Endings:
+    <br>
+    <script type="text/typogram">
   o-o   *-o   #-o   |  |  |  \ /    \   /     \ / \   /     \ / \   /
   o-*   *-*   #-*   o  *  #   o  o   o o    *  *   * *    #  #   # #
   o-#   *-#   #-#   |  |  |     / \ /   \  / \    /   \  / \    /   \
-</script>
+    </script>
 
-<br>
-Arrows:
-<br>
-<script type="text/typogram">
+    <br>
+    Arrows:
+    <br>
+    <script type="text/typogram">
           |  ^   ^  ^    /  \   \    /   \    /    >  <    <   >
   ->  <-  v  |  /    \  v    v   >  <    <    >   /    \   /   \
   
   >| |< ^ v >o o< ^ v >* *< ^ v ># #< ^ v
           -         o         *         #  
-</script>
+    </script>
 
-<br>
-Lines with decorations:
-<br>
-<script type="text/typogram">
-          +----+     o    |          o       *      *   .----------.
-  *-+---. '-* -+-    |    v         ^         \    /    |.--------.|
-    |   '--->   +----+  ->*<-      /   .-+->*<-o--+     |'------> ||
-  <-'       *---+     |<----->|   +----' |  ^   \       '---------'|
-                                         |__|    v      *----------'
-</script>
+    <h1 id="examples">Examples</h1>
 
-<br>
-Line ends:
-<br>
-<script type="text/typogram">
-o-o *-o        * o  o o o o  * * * *  o o o o  * * * *     o o o o  * * * *
-o-* *-*  v  v  ^ ^  | | | |  | | | |   \ \ \ \  \ \ \ \   / / / /  / / / /
-o-> *-> *  o        o * v    o * v      o * v    o * v   o * v    o * v  
-o-  *-              
+    <h2 id="protocols">Protocols</h2>
+        
+    <script type="text/typogram">
++-----+            +-----+
+|  A  |            |  B  |
++--+--+            +--+--+
+   | foo              |
+   |----------------->|
+   | hello            |
+   |----------------->|--+
+   |           world  |  | prompts the user
+   |<-----------------|--+
+   |                  |
+ --+--              --+--
+    </script>   
 
-^ ^  * o  |  |                           ^ ^ ^ ^             ^ ^ ^
-| |  ^ ^  v  v   *  o   ^ ^ ^ ^  | | | |  \ \ \ \  \ \ \ \  / / /  / / / /
-* o       *  o   ^  ^  o * v     o * v     o * v    o * v  o * v  o * v 
-  
-<-o <-* <-> <-                   -o -* -> -- *<- o<- ->o ->*
+    <h2 id="icons">Icons</h2>
+    
+    <script type="text/typogram">
+    Sender                Mail Server              Receiver
+                             _____
+  .---------.    SMTP       |=====|      POP      .---------.
+  |         |-------------->|     |<--------------|         |
+  |  Alice  |               |     |               |   Bob   |
+  +---------+               |  o  |               +---------+
+ /// _____ \\\              |_____|              /// _____ \\\
+'-------------'                                 '-------------'
+                    +---------------------+
+                    |"To: bob@bar.com"    |
+                    |"From: alice@foo.com"|
+                    |"Body: Hi!"          |
+                    +---------------------+
+    </script>   
+    
+    <h2 id="tables">Tables</h2>
 
-    \ | /
- \   vvv   /           \ | /
-  v+-----+v             vvv
- ->|     |<-           ->*<-
-  ^+-----+^             ^^^
- /   ^^^   \           / | \
-    / | \
-  
-</script>
+    <script type="text/typogram">
++-----+---------+---------+
+| ID  | First   | Last    |
++-----+---------+---------+
+| 1   | Joe     | Doe     |
++-----+---------+---------+
+| 2   | Anna    | Merkle  |
++-----+---------+---------+
+    </script>   
 
-<br>
-Graph with small nodes:
-<br>
-<script type="text/typogram">
-A   1    2   4                 8
-*-->o<-->o<--o---------.       o
-         ^   ^         |       ^
-         |   |         v       |
-         o<->*<-->o--->*-->o-->o<-->*
-         3   B    5    C   6   7    D
-</script>
+    <h2 id="flowcharts">Flow charts</h2>
+    
+    <script type="text/typogram">
+  .-------.                   +
+ (  START  )                 / \       
+  '---+---'                 /   \      +-+---------+-+    ___________
+      |         .---.      /     \     | | COMPLEX | |   /           \
+      v        ( END )<---+CHOICE +--->| |         | |->+ PREPARATION +-> X
+   +-------+    '---'      \     /     | | PROCESS | |   \___________/
+  / INPUT /                 \   /      +-+---------+-+ 
+ +-------+                   \ /
+      |                       +
+      v                       ^
+ +---------+             +----+----+
+ | PROCESS |------------>| PROCESS |<----- x
+ +---------+             +---------+
+    </script>
 
-<br>
-Trees:
-<br>
-<script type="text/typogram">
+    <h2 id="trees">Trees</h2>
+    
+    <script type="text/typogram">
       +              +              +-- 1        .-- 1     / 1
      / \             |           +--+         .--+        + 
     /   \        +---+---+       |  +-- 2     |  '-- 2   / \ 2
@@ -119,12 +208,11 @@ Trees:
      / \      / \
     B   C    A   B
 
-</script>
+    </script>
 
-<br>
-Big Shapes:
-<br>
-<script type="text/typogram">
+    <h2 id="shapes">Shapes</h2>
+    <h3>Big Shapes</h3>
+    <script type="text/typogram">
   +-----------+  +  +------+        .-----.  +-----+     +----+       +----+
    \         /  / \  \      \       |     |  |     |    /      \     /      \
     \       /  /   \  \      \      |     |  |     |   /        \   /        \
@@ -132,22 +220,18 @@ Big Shapes:
       \   /  /       \  \      \    |     |  |     |   \        /   \        /
        \ /  /         \  \      \   |     |  |     |    \      /     \      /
         +  +-----------+  +------+  '-----'  +-----+     +----+       +----+
-</script>   
+    </script>   
 
-<br>
-Small Shapes:
-<br>
-<script type="text/typogram">
+    <h3>Small Shapes</h3>
+    <script type="text/typogram">
    __        ____     ___                     .---.     __
   /  \   /\  \  /  +  \ /  /\   +-+  +-+ +-+  |   | ++ |  |  _
   \__/  /__\  \/  /_\  +  /  \  +-+ /_/   \_\ '---' ++ |__| |_|
                          +----+
-</script>   
+    </script>   
 
-<br>
-Overlaps and intersections:
-<br>
-<script type="text/typogram">                                                                                           
+    <h3>Overlaps and intersections</h3>
+    <script type="text/typogram">                                                                                           
       .---.         .---.         .---.         .---.         .---.           
       |   |         |   |         |   |         |   |         |   |          
    .--+---+--.   .--+---+--.   .--|   |--.   .--+   +--.   .----  |---.       
@@ -155,12 +239,11 @@ Overlaps and intersections:
    '--+---+--'   '--+---+--'   '--|   |--'   '--+   +--'   '--|  -----'       
       |   |         |   |         |   |         |   |         |   |          
       '---'         '---'         '---'         '---'         '---'           
-</script>
+    </script>
            
-<br>
-Big grids:
-<br>
-<script type="text/typogram">
+    <h2 id="grids">Grids</h2>
+    <h3>Big grids</h3>
+    <script type="text/typogram">
     +----+        +----+                                                                                                         
    /      \      /      \            .-----+-----+-----.                                                                         
   +        +----+        +----+      |     |     |     |          .-----+-----+-----+-----+                                      
@@ -172,12 +255,10 @@ Big grids:
     +----+        +----+        +    |     |     |     |    +-----+-----+-----+-----+
           \      /      \      /     |     |     |     |   /     /     /     /     /
            +----+        +----+      '-----+-----+-----'  '-----+-----+-----+-----+
-</script>   
+    </script>   
 
-<br>
-Small grids:
-<br>
-<script type="text/typogram">
+    <h3>Small grids</h3>
+    <script type="text/typogram">
        ___     ___      .---+---+---+---+---.     .---+---+---+---.  .---.   .---. 
    ___/   \___/   \     |   |   |   |   |   |    / \ / \ / \ / \ /   |   +---+   |
   /   \___/   \___/     +---+---+---+---+---+   +---+---+---+---+    +---+   +---+
@@ -185,23 +266,20 @@ Small grids:
   /   \___/   \___/     +---+---+---+---+---+     +---+---+---+---+  +---+   +---+
   \___/   \___/   \     |   |   |   |   |   |    / \ / \ / \ / \ /   |   +---+   |
       \___/   \___/     '---+---+---+---+---'   '---+---+---+---'    '---'   '---'
-</script>   
+    </script>   
 
-<br>
-Dot grids:
-<br>
-<script type="text/typogram">
+    <h3>Dot grids</h3>
+    <script type="text/typogram">
   o o o o o    * * * * *    o * * * o     o o o       * * *    . * . . . 
   o o o o o    * * * * *    * o o o *    o o o o     * * * *   . o . . .
   o o o o o    * * * * *    o o o o *   o o o o o   * * * * *  . . . . .
   o o o o o    * * * * *    * * * o o    o o o o     * * * *   . o o * .
   o o o o o    * * * * *    o o o * *     o o o       * * *    . o o o o
-</script>   
+    </script>   
 
-<br>
-Time series:
-<br>
-<script type="text/typogram">
+    <h2 id="series">Time series</h2>
+    
+    <script type="text/typogram">
     E +-------------------------*--+     E |                         o
     D |-------------------*--*--|--*     D |                   o  o  |  o
     C |-------------*--*  |  |  |  |     C |             o  o  |  |  |  |
@@ -224,76 +302,10 @@ Time series:
   11.00 ┤ ╰╯
         └───────────┴───────────┴───────────┴───────────┴───────────┴────
       2011        2012        2013        2014        2015        2016
-</script>   
+    </script>   
 
-<br>
-Tables:
-<br>
-<script type="text/typogram">
-+-----+---------+---------+
-| ID  | First   | Last    |
-+-----+---------+---------+
-| 1   | Joe     | Doe     |
-+-----+---------+---------+
-| 2   | Anna    | Merkle  |
-+-----+---------+---------+
-</script>   
-
-<br>
-Icon diagrams:
-<br>
-<script type="text/typogram">
-    Sender                Mail Server              Receiver
-                             _____
-  .---------.    SMTP       |=====|      POP      .---------.
-  |         |-------------->|     |<--------------|         |
-  |  Alice  |               |     |               |   Bob   |
-  +---------+               |  o  |               +---------+
- /// _____ \\\              |_____|              /// _____ \\\
-'-------------'                                 '-------------'
-                    +---------------------+
-                    |"To: bob@bar.com"    |
-                    |"From: alice@foo.com"|
-                    |"Body: Hi!"          |
-                    +---------------------+
-</script>   
-
-<br>
-Protocols:
-<br>
-<script type="text/typogram">
-+-----+            +-----+
-|  A  |            |  B  |
-+--+--+            +--+--+
-   | foo              |
-   |----------------->|
-   | hello            |
-   |----------------->|--+
-   |           world  |  | prompts the user
-   |<-----------------|--+
-   |                  |
- --+--              --+--
-</script>   
-
-<br>
-Graphic diagrams:
-<br>
-<script type="text/typogram">
-     0       3                         P *              Eye /         ^     /
-     *-------*      +y                    \                +)          \   /  Reflection
-  1 /|    2 /|       ^                     \                \           \ v
-   *-+-----* |       |                v0    \       v3           --------*--------
-   | |4    | |7      | ◄╮               *----\-----*
-   | *-----|-*     ⤹ +-----> +x        /      v X   \                o
-   |/      |/       / ⤴               /        o     \              / \
-   *-------*       v                 /                \            /   \
-  5       6      +z              v1 *------------------* v2       o-----o
-</script>   
-
-<br>
-Plot diagrams:
-<br>
-<script type="text/typogram">
+    <h2 id="plots">Plots</h2>
+    <script type="text/typogram">
         ▲
     Uin :   .------------------------
         :   |
@@ -313,50 +325,69 @@ Cpu.Qon :~~~~~~~~~~~~~~~~.-----------
         :                | Inactive
         :     Active     |
         *----------------'~~~~~~~~~~~▶
-</script>   
+     </script>   
 
-<br>
-Flow charts:
-<br>
-<script type="text/typogram">
-  .-------.                   +
- (  START  )                 / \       
-  '---+---'                 /   \      +-+---------+-+    ___________
-      |         .---.      /     \     | | COMPLEX | |   /           \
-      v        ( END )<---+CHOICE +--->| |         | |->+ PREPARATION +-> X
-   +-------+    '---'      \     /     | | PROCESS | |   \___________/
-  / INPUT /                 \   /      +-+---------+-+ 
- +-------+                   \ /
-      |                       +
-      v                       ^
- +---------+             +----+----+
- | PROCESS |------------>| PROCESS |<----- x
- +---------+             +---------+
-</script>
 
-<br>
-Music chords:
-<br>
-<script type="text/typogram">
-       C       
-              
-         x x x 
- ┍━┯━┯━┯━┯━┯━┑ 
- ➊ ➊ ➊ ➊ │ │ │ 
- ├─┼─┼─┼─┼─┼─┤ 
- │ │ │ ➋ │ │ │ 
- ├─┼─┼─┼─┼─┼─┤ 
- │ ➌ ➍ │ │ │ │ 
- ├─┼─┼─┼─┼─┼─┤ 
- │ │ │ │ │ │ │ 
- ├─┼─┼─┼─┼─┼─┤ 
- │ │ │ │ │ │ │ 
- └─┴─┴─┴─┴─┴─┘ 
- C G C E x x x  
-</script>
+    <h2 id="scribbles">Scribbles</h2>
+    <h3>Lines with decorations</h3>
+    <script type="text/typogram">
+          +----+     o    |          o       *      *   .----------.
+  *-+---. '-* -+-    |    v         ^         \    /    |.--------.|
+    |   '--->   +----+  ->*<-      /   .-+->*<-o--+     |'------> ||
+  <-'       *---+     |<----->|   +----' |  ^   \       '---------'|
+                                         |__|    v      *----------'
+    </script>
+    
+    <h3>Line ends</h3>
+    <script type="text/typogram">
+o-o *-o        * o  o o o o  * * * *  o o o o  * * * *     o o o o  * * * *
+o-* *-*  v  v  ^ ^  | | | |  | | | |   \ \ \ \  \ \ \ \   / / / /  / / / /
+o-> *-> *  o        o * v    o * v      o * v    o * v   o * v    o * v  
+o-  *-              
 
-<br>
-<script>
+^ ^  * o  |  |                           ^ ^ ^ ^             ^ ^ ^
+| |  ^ ^  v  v   *  o   ^ ^ ^ ^  | | | |  \ \ \ \  \ \ \ \  / / /  / / / /
+* o       *  o   ^  ^  o * v     o * v     o * v    o * v  o * v  o * v 
+  
+<-o <-* <-> <-                   -o -* -> -- *<- o<- ->o ->*
+
+    \ | /
+ \   vvv   /           \ | /
+  v+-----+v             vvv
+ ->|     |<-           ->*<-
+  ^+-----+^             ^^^
+ /   ^^^   \           / | \
+    / | \
+  
+    </script>
+
+    <h3>Graph with small nodes</h3>
+    <script type="text/typogram">
+A   1    2   4                 8
+*-->o<-->o<--o---------.       o
+         ^   ^         |       ^
+         |   |         v       |
+         o<->*<-->o--->*-->o-->o<-->*
+         3   B    5    C   6   7    D
+    </script>
+
+    <h3>Graphic diagrams</h3>
+    
+    <script type="text/typogram">
+     0       3                         P *              Eye /         ^     /
+     *-------*      +y                    \                +)          \   /  Reflection
+  1 /|    2 /|       ^                     \                \           \ v
+   *-+-----* |       |                v0    \       v3           --------*--------
+   | |4    | |7      | ◄╮               *----\-----*
+   | *-----|-*     ⤹ +-----> +x        /      v X   \                o
+   |/      |/       / ⤴               /        o     \              / \
+   *-------*       v                 /                \            /   \
+  5       6      +z              v1 *------------------* v2       o-----o
+    </script>   
+
+
+    <br>
+    <script>
 customElements.define("typo-gram", class Typogram extends HTMLElement {
   constructor() {
     super();
@@ -366,8 +397,10 @@ customElements.define("typo-gram", class Typogram extends HTMLElement {
     console.log(this.innerHTML);
   }
 });
-</script>
+    </script>
 
-<typo-gram>
-</typo-gram>
+    <typo-gram>
+    </typo-gram>
 
+  </main>
+</div>

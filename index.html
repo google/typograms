@@ -85,7 +85,8 @@
       <li><a href="#scribbles">Scribbles</a></li>
     </ul>
 
-    <a href="#related">Related Work</a>
+    <a href="#tbd">Known Issues</a>
+    <br><br><a href="#related">Related</a>
     <br><br><a href="#specification">Specification</a>
   </div>
   <main>
@@ -133,27 +134,23 @@
   |   |   | |   +- -+  -+ +-   |  -+-  +-  -+  +- -+    \  /  /     \  / \   +     + +
                                                                                   /   \
 
-  .- -.  -. .-  |   |   | |   -.-  |    /  \  \     /  .-  -.  .- -.    .   \ /   \   /   \  /  |  |
-  |   |   | |   '- -'  -' '-   |  -'-  '-  -'  '- -'    \  /  /     \  / \   '     ) (    (  ) (    ) 
-                                                                                  /   \   /  \  |  |
+  .- -.  -. .-  |   |   | |   -.-  |    /  \  \     /  .-  -.  .- -.    .   \ /   \   / 
+  |   |   | |   '- -'  -' '-   |  -'-  '-  -'  '- -'    \  /  /     \  / \   '     . .  
+                                                                                  /   \   
 
-   _ _   _   _                ___                       _  _   __ __    _        \   /
-  |   |   | |   |_ _|  _| |_   |  _|_  /_  _\  \_  _/   \  /  /     \  / \  \_/   | |
-                                                                                 /   \
+   _ _   _   _                ___                       _  _   __ __    _         \   /
+  |   |   | |   |_ _|  _| |_   |  _|_  /_  _\  \_  _/   \  /  /     \  / \  \_/   |   |
+                                                                                  /   \
 
                                                                                           
   +~ ~+  ~+ +~  :   :   : :   ~+~  : 
   :   :   : :   +~ ~+  ~+ +~   :  ~+~
 
-  /   \   |    |           /    \
-  |   |   \    /   /\  \/  \    /
+           /    \
+   /\  \/  \    /
 
   -.   .-  -. .-. .-  .-.
    '- -'    '-' '-'   '-'
-
-   __   .-.    .-.   |   |   /  \
-  (__) ( 1 )  |   |   '-'   +)  (+
-        '-'                  \  /
     </script>
 
     <h2 id="endings">Endings</h2>
@@ -224,11 +221,11 @@
     
     <script type="text/typogram">
   .-------.                   +
- (  START  )                 / \       
+  | START |                  / \       
   '---+---'                 /   \      +-+---------+-+    ___________
-      |         .---.      /     \     | | COMPLEX | |   /           \
-      v        ( END )<---+CHOICE +--->| |         | |->+ PREPARATION +-> X
-   +-------+    '---'      \     /     | | PROCESS | |   \___________/
+      |        .-----.     /     \     | | COMPLEX | |   /           \
+      v        | END |<---+CHOICE +--->| |         | |->+ PREPARATION +-> X
+   +-------+   '-----'     \     /     | | PROCESS | |   \___________/
   / INPUT /                 \   /      +-+---------+-+ 
  +-------+                   \ /
       |                       +
@@ -317,7 +314,7 @@
 
     <h3>Dot grids</h3>
     <script type="text/typogram">
-  o o o o o    * * * * *    o * * * o     o o o       * * *    . * . . . 
+  o o o o o    * * * * *    o * * * o     o o o       * * *    . * . . .
   o o o o o    * * * * *    * o o o *    o o o o     * * * *   . o . . .
   o o o o o    * * * * *    o o o o *   o o o o o   * * * * *  . . . . .
   o o o o o    * * * * *    * * * o o    o o o o     * * * *   . o o * .
@@ -433,6 +430,21 @@ A   1    2   4                 8
     </script>   
 
 
+    <h1 id="tbd">Known Issues</h1>
+
+    <p>This is a list of constructions that we'd like to support but haven't gotten to it quite yet.</p>
+
+    <h2>Parenthesis and spheres</h2>
+    
+    <script type="text/typogram">
+"      \  /  |  |                     "
+"      (  ) (    )                    "
+"      /  \  |  |                     "
+"   __   .-.    .-.   |   |   /  \    "
+"  (__) ( 1 )  |   |   '-'   +)  (+   "
+"        '-'                  \  /    "
+    </script>
+    
     <h1 id="related">Related Work</h1>
 
     <p>The closest work to typograms is <a href="https://github.com/ivanceras/svgbob">svgbob</a>: it renders diagrams from ASCII and works in browsers (through a webassembly port which spits out SVGs). It supports a similar set of features (with the notable exception of its support for circle drawing) and picks a similar set of typographic conventions (with the notable exception of text rendering). It is well-<a href="https://ivanceras.github.io/content/Svgbob/Specification.html">specified</a>. I ran into enough challenges with (a) the text rendering and (b) running in the browser through the webassembly port that motivated me to rewrite it in JS (svgbob is written in rust), but is otherwise a perfectly valid (more mature) alternative.</p>

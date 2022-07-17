@@ -233,9 +233,9 @@ glyphs["/"] = (around) => {
   const result = document.createElementNS(
       "http://www.w3.org/2000/svg", "g");
   result.appendChild(cross([
-    false, // top
+    ["|"].includes(top), // top
     false, // right
-    false, // bottom
+    ["|"].includes(bottom), // bottom
     false, // left
     true, // topRight
     false, // bottomRight
@@ -286,9 +286,9 @@ glyphs["\\"] = (around) => {
   const result = document.createElementNS(
       "http://www.w3.org/2000/svg", "g");
   result.appendChild(cross([
-    false, // top
+    ["|"].includes(top), // top
     false, // right
-    false, // bottom
+    ["|"].includes(bottom), // bottom
     false, // left
     false, // topRight
     true, // bottomRight

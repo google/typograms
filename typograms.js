@@ -823,14 +823,15 @@ glyphs["<"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
       "http://www.w3.org/2000/svg", "g");
   const arrow = document.createElementNS(
     "http://www.w3.org/2000/svg", "polygon");
-  arrow.setAttribute("points", "0,0 21,9 0,18");
-  arrow.setAttribute("transform", "translate(9 0) translate(0 36) rotate(180)");
+  arrow.setAttribute("points", "0,0 42,18 0,36");
+  arrow.setAttribute("transform", "translate(30 9) translate(0 36) rotate(180)");
   result.appendChild(arrow);
-  const center = document.createElementNS(
-    "http://www.w3.org/2000/svg", "polygon");
-  center.setAttribute("points", "0,0 9,0 9,6 0,6");
-  center.setAttribute("transform", "translate(9 24)");
-  result.appendChild(center);
+  return result;
+  //const center = document.createElementNS(
+  //  "http://www.w3.org/2000/svg", "polygon");
+  //center.setAttribute("points", "0,0 9,0 9,6 0,6");
+  //center.setAttribute("transform", "translate(9 24)");
+  //result.appendChild(center);
   result.appendChild(cross([
     false, // top
     ["-", "+"].includes(right), // right

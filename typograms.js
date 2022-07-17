@@ -798,7 +798,11 @@ glyphs[">"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
   const arrow = document.createElementNS(
     "http://www.w3.org/2000/svg", "polygon");
   arrow.setAttribute("points", "0,0 42,18 0,36");
-  arrow.setAttribute("transform", "translate(0 9)");
+  let reach = 0;
+  if (right == "*" || right == "o" || right == "#") {
+    reach -= 18;
+  }
+  arrow.setAttribute("transform", `translate(${reach} 9)`);
   result.appendChild(arrow);
   return result;
   const center = document.createElementNS(
@@ -825,7 +829,11 @@ glyphs["<"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
   const arrow = document.createElementNS(
     "http://www.w3.org/2000/svg", "polygon");
   arrow.setAttribute("points", "0,0 42,18 0,36");
-  arrow.setAttribute("transform", "translate(30 9) translate(0 36) rotate(180)");
+  let reach = 30;
+  if (left == "*" || left == "o" || left == "#") {
+    reach += 18;
+  }
+  arrow.setAttribute("transform", `translate(${reach} 9) translate(0 36) rotate(180)`);
   result.appendChild(arrow);
   return result;
   //const center = document.createElementNS(
@@ -855,6 +863,8 @@ glyphs["v"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
   let reach = 36;
   if (bottom == "_") {
     reach += 18;
+  } else if (bottom == "*" || bottom == "o" ||  bottom == "#") {
+    reach -= 18;
   }
   if (topRight == "/") {
     arrow.setAttribute("transform", `translate(-36 33) rotate(${90 + 22.5}, 42, 18)`);

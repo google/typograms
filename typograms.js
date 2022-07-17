@@ -228,18 +228,19 @@ glyphs["o"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
   return result;
 }
 
-glyphs["/"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, topLeft]) => {
+glyphs["/"] = (around) => {
+  const [top, right, bottom, left, topRight, bottomRight, bottomLeft, topLeft] = around;
   const result = document.createElementNS(
       "http://www.w3.org/2000/svg", "g");
   result.appendChild(cross([
-    false,
-    false,
-    false,
-    false,
-    true,
-    false,
-    true,
-    false
+    false, // top
+    false, // right
+    false, // bottom
+    false, // left
+    true, // topRight
+    false, // bottomRight
+    true,  // bottomLeft
+    false  // topLeft
     ]));
   if (right == "\\") {
     const tip = cross([
@@ -271,10 +272,17 @@ glyphs["/"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
     tip.setAttribute("clip-path", "polygon(15 -6, 33 -6, 33 6, 15 6)");
     result.appendChild(tip);
   }
+
+  if (right == "_") {
+    const line = glyphs["_"](around);
+    result.appendChild(line);
+  }
+
   return result;
 }
 
-glyphs["\\"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, topLeft]) => {
+glyphs["\\"] = (around) => {
+  const [top, right, bottom, left, topRight, bottomRight, bottomLeft, topLeft] = around;
   const result = document.createElementNS(
       "http://www.w3.org/2000/svg", "g");
   result.appendChild(cross([
@@ -317,6 +325,12 @@ glyphs["\\"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, to
     tip.setAttribute("clip-path", "polygon(-3 0, 0 0, 0 6, -3 6)");  
     result.appendChild(tip);
   }
+
+  if (left == "_") {
+    const line = glyphs["_"](around);
+    result.appendChild(line);
+  }
+
   return result;
 }
 

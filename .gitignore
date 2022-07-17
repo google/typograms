@@ -1,0 +1,8 @@
+.bundle/
+_site/
+vendor/
+Gemfile.lock
+*~
+.jekyll-metadata
+node_modules/
+package-lock.json

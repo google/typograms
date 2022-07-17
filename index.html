@@ -1,10 +1,12 @@
 <head>
  <script src="typograms.js"></script>
  <link rel="stylesheet" href="typograms.css"></link>
+ <link href="google-sans.css" media="screen" rel="stylesheet" type="text/css">
  <style>
    html, body, .header {
        margin: 0;
        padding: 0;
+       font-family: Google Sans,Roboto,Arial,Helvetica,sans-serif;
    }
    .header {
        box-shadow: 0 2px 6px 0 rgb(0 0 0 / 12%), inset 0 -1px 0 0 #dadce0;
@@ -44,9 +46,10 @@
 </div>
 <div class="body">
   <div class="menu">
-    <br><a href="#introduction">Introduction</a>
-    <br>
-    <br><a href="#primitives">Primitives</a>
+    <a href="#introduction">Introduction</a>
+    <br><br><a href="#installation">Installation</a>
+    
+    <br><br><a href="#primitives">Primitives</a>
     <ol>
       <li><a href="#pipes">Pipes and connectors</a></li>
       <li><a href="#endings">Endings</a></li>
@@ -66,13 +69,16 @@
       <li><a href="#plots">Plots</a></li>
       <li><a href="#scribbles">Scribbles</a></li>
     </ul>
+
+    <a href="#specification">Specification</a>
   </div>
   <main>
 
     <h1 id="introduction">Introduction</h1>
+    <h1 id="installation">Installation</h1>
     <h1 id="primitives">Primitives</h1>
     
-    <h2>Pipes and connectors</h2>
+    <h2 id="pipes">Pipes and connectors</h2>
     <script type="text/typogram">
 
   +- -+  -+ +-  |   |   | |   -+-  |    /  \  \     /  +-  -+  +- -+    +   \ /   \   /
@@ -102,14 +108,14 @@
         '-'                  \  /
     </script>
 
-    <h2>Endings</h2>
+    <h2 id="endings">Endings</h2>
     <script type="text/typogram">
   o-o   *-o   #-o   |  |  |  \ /    \   /     \ / \   /     \ / \   /
   o-*   *-*   #-*   o  *  #   o  o   o o    *  *   * *    #  #   # #
   o-#   *-#   #-#   |  |  |     / \ /   \  / \    /   \  / \    /   \
     </script>
 
-    <h2>Arrows</h2>
+    <h2 id="arrows">Arrows</h2>
     <script type="text/typogram">
           |  ^   ^  ^    /  \   \    /   \    /    >  <    <   >
   ->  <-  v  |  /    \  v    v   >  <    <    >   /    \   /   \
@@ -380,6 +386,8 @@ A   1    2   4                 8
     </script>   
 
 
+    <h1 id="specification">Specification</h1>
+    
     <br>
     <script>
 customElements.define("typo-gram", class Typogram extends HTMLElement {

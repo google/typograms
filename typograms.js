@@ -852,7 +852,11 @@ glyphs["v"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
   const arrow = document.createElementNS(
     "http://www.w3.org/2000/svg", "polygon");
   arrow.setAttribute("points", "0,0 42,18 0,36");
-  arrow.setAttribute("transform", "translate(33 36) rotate(90)");
+  let reach = 36;
+  if (bottom == "_") {
+    reach += 18;
+  }
+  arrow.setAttribute("transform", `translate(33 ${reach}) rotate(90)`);
   result.appendChild(arrow);
   result.appendChild(cross([
     ["|", "+"].includes(top), // top
@@ -877,10 +881,14 @@ glyphs["^"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
   const arrow = document.createElementNS(
     "http://www.w3.org/2000/svg", "polygon");
   arrow.setAttribute("points", "0,0 42,18 0,36");
-  arrow.setAttribute("transform", "translate(-3 18) rotate(-90)");
+  let reach = 42;
+  if (top == "-") {
+    reach -= 15;
+  }
+  arrow.setAttribute("transform", `translate(-3 ${reach}) rotate(-90)`);
   result.appendChild(arrow);
   result.appendChild(cross([
-    ["+", "|"].includes(bottom), // top
+    false, // top
     false, // right
     ["+", "|"].includes(bottom), // bottom
     false, // left

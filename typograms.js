@@ -856,7 +856,13 @@ glyphs["v"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
   if (bottom == "_") {
     reach += 18;
   }
-  arrow.setAttribute("transform", `translate(33 ${reach}) rotate(90)`);
+  if (topRight == "/") {
+    arrow.setAttribute("transform", `translate(-36 33) rotate(${90 + 22.5}, 42, 18)`);
+  } else if (topLeft == "\\") {
+    arrow.setAttribute("transform", `translate(-18 33) rotate(${90 - 22.5}, 42, 18)`);
+  } else {
+    arrow.setAttribute("transform", `translate(33 ${reach}) rotate(90)`);
+  }
   result.appendChild(arrow);
   result.appendChild(cross([
     ["|", "+"].includes(top), // top

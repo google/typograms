@@ -48,7 +48,7 @@
    }
    .menu {
        position: fixed;
-       padding: 4em;
+       padding: 2em 4em;
    }
 
    pre code.hljs {
@@ -69,6 +69,7 @@
       <li><a href="#pipes">Pipes</a></li>
       <li><a href="#dots">Dots</a></li>
       <li><a href="#arrows">Arrows</a></li>
+      <li><a href="#text">Text</a></li>
     </ul>
 
     <a href="#examples">Examples</a>
@@ -82,6 +83,9 @@
       <li><a href="#shapes">Shapes</a></li>
       <li><a href="#grids">Grids</a></li>
       <li><a href="#series">Time series</a></li>
+      <li><a href="#chips">Chips</a></li>
+      <li><a href="#circuits">Circuits</a></li>
+      <li><a href="#mindmaps">Mindmaps</a></li>
       <li><a href="#scribbles">Scribbles</a></li>
     </ul>
 
@@ -180,6 +184,11 @@
   \ |  | /     ^|  |^   \    /    ^  ^
    v|  |v     / |  | \   v  v    /    \
                          ----    
+    </script>
+
+    <h2 id="text">Text</h2>
+    <script type="text/typogram">
+"Anything between double quotes is rendered as text!"
     </script>
 
     <h1 id="examples">Examples</h1>
@@ -473,56 +482,8 @@ Cpu.Qon :~~~~~~~~~~~~~~~~.-----------
      |_________________________| 
     </script>
 
-    <h2 id="scribbles">Scribbles</h2>
-    <h3>Lines with decorations</h3>
+    <h2 id="circuits">Circuits</h2>
     <script type="text/typogram">
-          +----+     o    |          o       *      *   .----------.
-  *-+---. '-* -+-    |    v         ^         \    /    |.--------.|
-    |   '--->   +----+  ->*<-      /   .-+->*<-o--+     |'------> ||
-  <-'       *---+     |<----->|   +----' |  ^   \       '---------'|
-                                         |__|    v      *----------'
-
-                                   .--->  F
-          A       B      C  D     /
-          *-------*-----*---*----*----->  E
-                   \            ^ \
-                    \          /   '--->  G
-                     B --> C -+
-
-
-                                            .-->  Alpha
-                                           /
-                                          .---->  Initial Release
-          Planning *-------.             /         \
-                            \           /           '---> Patch 1
-      Initial research       \         /             \
-                *             \       /               '-->  Patch 2
-                 \             \     /---------> Beta
-                  \             \   /
-                   \             o o                     _______
-                    \          .---. *-----.            /       \
-                     '------>  |   |       '------o->  . Release .
-                               `---' o                  \_______/
-                               o  o o \
-                              /    \ \ \
-                          .--'      \ \ \
-                         /           \ \ '----+->  Push backs
-                        /             \ \      \
-                       /|              \ \      '----> Setbacks
-                      / |               \ \
-                     V /|                \ '-----> Reception
-                Team  / |                 \
-                     v /|                  \
-             Worklaod / .                   '-->> Career change
-                     V /
-                 PTO  /
-                     V
-                 Bug
-
-
- o->  It can do complex stuff such as circuit diagrams
-
-
       "+10-15V"          ___0,047R
       *---------o-----o-|___|-o--o---------o----o-------.
    "+"|         |     |       |  |         |    |       |
@@ -559,7 +520,55 @@ Cpu.Qon :~~~~~~~~~~~~~~~~.-----------
                                                     '+'
                                                      |
                                                     GND
+    </script>
 
+    <h2 id="mindmaps">Mindmaps</h2>
+    <script type="text/typogram">
+                                            .-->  Alpha
+                                           /
+                                          .---->  Initial Release
+          Planning *-------.             /         \
+                            \           /           '---> Patch 1
+      Initial research       \         /             \
+                *             \       /               '-->  Patch 2
+                 \             \     /---------> Beta
+                  \             \   /
+                   \             o o                     _______
+                    \          .---. *-----.            /       \
+                     '------>  |   |       '------o->  . Release .
+                               `---' o                  \_______/
+                               o  o o \
+                              /    \ \ \
+                          .--'      \ \ \
+                         /           \ \ '----+->  Push backs
+                        /             \ \      \
+                       /|              \ \      '----> Setbacks
+                      / |               \ \
+                     V /|                \ '-----> Reception
+                Team  / |                 \
+                     v /|                  \
+             Worklaod / .                   '-->> Career change
+                     V /
+                 PTO  /
+                     V
+                 Bug
+    </script>
+
+    <h2 id="scribbles">Scribbles</h2>
+    <h3>Lines with decorations</h3>
+    <script type="text/typogram">
+          +----+     o    |          o       *      *   .----------.
+  *-+---. '-* -+-    |    v         ^         \    /    |.--------.|
+    |   '--->   +----+  ->*<-      /   .-+->*<-o--+     |'------> ||
+  <-'       *---+     |<----->|   +----' |  ^   \       '---------'|
+                                         |__|    v      *----------'
+
+                                   .--->  F
+          A       B      C  D     /
+          *-------*-----*---*----*----->  E
+                   \            ^ \
+                    \          /   '--->  G
+                     B --> C -+
                                          
     </script>
     

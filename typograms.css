@@ -21,7 +21,7 @@
 
 .diagram text, .glyph, .debug text {
   /** font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; **/
-  font-family: monospace;
+  font-family: 'courier new', monospace;
   font-size: 3em;
   text-anchor: middle;
   alignment-baseline: central;

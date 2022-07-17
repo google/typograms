@@ -74,14 +74,13 @@
     <a href="#examples">Examples</a>
     <ul>
       <li><a href="#protocols">Protocols</a></li>
-      <li><a href="#icons">Icons</a></li>
+      <li><a href="#architecture">Architecture</a></li>
       <li><a href="#tables">Tables</a></li>
       <li><a href="#flowcharts">Flowchats</a></li>
       <li><a href="#trees">Trees</a></li>
       <li><a href="#shapes">Shapes</a></li>
       <li><a href="#grids">Grids</a></li>
       <li><a href="#series">Time series</a></li>
-      <li><a href="#plots">Plots</a></li>
       <li><a href="#scribbles">Scribbles</a></li>
     </ul>
 
@@ -196,7 +195,9 @@
  --+--              --+--
     </script>   
 
-    <h2 id="icons">Icons</h2>
+    <h2 id="architecture">Architecture</h2>
+
+    <h3>Components</h3>
     
     <script type="text/typogram">
     Sender                Mail Server              Receiver
@@ -214,6 +215,28 @@
                     +---------------------+
     </script>   
     
+    <h3>Layers</h3>
+    
+    <script type="text/typogram">
+ .---.  .---. .---.  .---.    .---.  .---.
+ '---'  '---' '---'  '---'    '---'  '---'
+   |      |     |      |        |      |
+   v      v     |      v        |      v
+ .------------. | .-----------. |  .-----.
+ | Filesystem | | | Scheduler | |  | MMU |
+ '------------' | '-----------' |  '-----'
+        |       |      |        |
+        v       |      |        v
+     .----.     |      |    .---------.
+     | IO |<----'      |    | Network |
+     '----'            |    '---------'
+        |              |         |
+        v              v         v
+ .---------------------------------------.
+ |                  HAL                  |
+ '---------------------------------------'
+    </script>
+
     <h2 id="tables">Tables</h2>
 
     <script type="text/typogram">
@@ -333,15 +356,6 @@
     <h2 id="series">Time series</h2>
     
     <script type="text/typogram">
-    E +-------------------------*--+     E |                         o
-    D |-------------------*--*--|--*     D |                   o  o  |  o
-    C |-------------*--*  |  |  |  |     C |             o  o  |  |  |  |
-    B |-------*--*  |  |  |  |  |  |     B |       o  o  |  |  |  |  |  |
-    A +-*--*--+--+--+--+--+--+--+--+     A +-o--o--|--|--|--|--|--|--|--|
-        5 10 15 20 25 30 35 40 45 50         5 10 15 20 25 30 35 40 45 50
-
-
-
   85.67 ┤                                       ╭╮
   78.20 ┤                                       ││                  ╭╮
   70.73 ┤                                       ││  ╭╮ ╭╮ ╭╮   ╭╮  ╭╯╰─╮
@@ -355,10 +369,14 @@
   11.00 ┤ ╰╯
         └───────────┴───────────┴───────────┴───────────┴───────────┴────
       2011        2012        2013        2014        2015        2016
-    </script>   
 
-    <h2 id="plots">Plots</h2>
-    <script type="text/typogram">
+    E +-------------------------*--+     E |                         o
+    D |-------------------*--*--|--*     D |                   o  o  |  o
+    C |-------------*--*  |  |  |  |     C |             o  o  |  |  |  |
+    B |-------*--*  |  |  |  |  |  |     B |       o  o  |  |  |  |  |  |
+    A +-*--*--+--+--+--+--+--+--+--+     A +-o--o--|--|--|--|--|--|--|--|
+        5 10 15 20 25 30 35 40 45 50         5 10 15 20 25 30 35 40 45 50
+      
         ▲
     Uin :   .------------------------
         :   |

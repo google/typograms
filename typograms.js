@@ -341,12 +341,12 @@ glyphs["#"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
       "http://www.w3.org/2000/svg", "polygon");
   const points = [
     [0, 0],
-    [24, 0],
-    [24, 24],
-    [0, 24],
+    [42, 0],
+    [42, 42],
+    [0, 42],
   ];
   polygon.setAttribute("points", points.map(([x, y]) => `${x},${y}`).join(" "));
-  polygon.setAttribute("transform", "translate(3, 15)");
+  polygon.setAttribute("transform", "translate(-6, 6)");
   result.appendChild(polygon);
 
   result.appendChild(cross([

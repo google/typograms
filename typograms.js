@@ -797,9 +797,10 @@ glyphs[">"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
       "http://www.w3.org/2000/svg", "g");
   const arrow = document.createElementNS(
     "http://www.w3.org/2000/svg", "polygon");
-  arrow.setAttribute("points", "0,0 21,9 0,18");
-  arrow.setAttribute("transform", "translate(6 0) translate(15 18)");
+  arrow.setAttribute("points", "0,0 42,18 0,36");
+  arrow.setAttribute("transform", "translate(0 9)");
   result.appendChild(arrow);
+  return result;
   const center = document.createElementNS(
     "http://www.w3.org/2000/svg", "polygon");
   center.setAttribute("points", "-3,0 6,0 6,6 -3,6");
@@ -850,18 +851,13 @@ glyphs["v"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
       "http://www.w3.org/2000/svg", "g");
   const arrow = document.createElementNS(
     "http://www.w3.org/2000/svg", "polygon");
-  arrow.setAttribute("points", "0,0 21,9 0,18");
-  arrow.setAttribute("transform", "translate(6 0) translate(18 57) rotate(90)");
+  arrow.setAttribute("points", "0,0 42,18 0,36");
+  arrow.setAttribute("transform", "translate(33 36) rotate(90)");
   result.appendChild(arrow);
-  const center = document.createElementNS(
-    "http://www.w3.org/2000/svg", "polygon");
-  center.setAttribute("points", "12,27 18,27 18,57 12,57");
-  center.setAttribute("transform", "translate(0 0)");
-  result.appendChild(center);
   result.appendChild(cross([
     ["|", "+"].includes(top), // top
     false, // right
-    false, // bottom
+    ["|", "+"].includes(top), // bottom
     false, // left
     ["/"].includes(topRight), // topRight
     false, // bottomRight
@@ -880,16 +876,11 @@ glyphs["^"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
       "http://www.w3.org/2000/svg", "g");
   const arrow = document.createElementNS(
     "http://www.w3.org/2000/svg", "polygon");
-  arrow.setAttribute("points", "0,0 21,9 0,18");
-  arrow.setAttribute("transform", "translate(6 -3) rotate(-90)");
+  arrow.setAttribute("points", "0,0 42,18 0,36");
+  arrow.setAttribute("transform", "translate(-3 18) rotate(-90)");
   result.appendChild(arrow);
-  const center = document.createElementNS(
-    "http://www.w3.org/2000/svg", "polygon");
-  center.setAttribute("points", "12,36 18,36 18,69 12,69");
-  center.setAttribute("transform", "translate(0 -39)");
-  result.appendChild(center);
   result.appendChild(cross([
-    false, // top
+    ["+", "|"].includes(bottom), // top
     false, // right
     ["+", "|"].includes(bottom), // bottom
     false, // left

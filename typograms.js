@@ -885,7 +885,13 @@ glyphs["^"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
   if (top == "-") {
     reach -= 15;
   }
-  arrow.setAttribute("transform", `translate(-3 ${reach}) rotate(-90)`);
+  if (bottomLeft == "/") {
+    arrow.setAttribute("transform", `translate(-18 -15) rotate(${- 45 - 22.5}, 42, 18)`);
+  } else if (bottomRight == "\\") {
+    arrow.setAttribute("transform", `translate(-36 -15) rotate(${- 90 - 22.5}, 42, 18)`);
+  } else { 
+     arrow.setAttribute("transform", `translate(-3 ${reach}) rotate(-90)`);
+  }
   result.appendChild(arrow);
   result.appendChild(cross([
     false, // top

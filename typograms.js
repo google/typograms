@@ -1193,14 +1193,23 @@ function around(diagram, [x, y]) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  for (const script of document.getElementsByTagName("script")) {
-    if (script.type == "text/typogram") {
-      if (script.hasAttribute("disabled")) {
-        continue;
-      }
-      const svg = create(script);
-      script.parentNode.insertBefore(svg, script.nextSibling);
+  // replace all of the <script type="text/typogram"> tags
+  for (const script of document.querySelectorAll("script[type='text/typogram']")) {
+    if (script.hasAttribute("disabled")) {
+      continue;
     }
+    const svg = create(script);
+    script.parentNode.insertBefore(svg, script.nextSibling);
+  }
+
+  // replace all of the <pre lang="typogram"> tags
+  for (const script of document.querySelectorAll("pre[lang='typogram'] code")) {
+    if (script.hasAttribute("disabled")) {
+      continue;
+    }
+    const svg = create(script);
+    script.parentNode.insertBefore(svg, script.nextSibling);
+    script.remove();
   }
 });
 

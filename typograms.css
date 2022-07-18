@@ -28,6 +28,11 @@
   white-space: pre;
 }
 
+text::selection {
+    fill: black;
+    background-color: #EEE;
+}
+
 .reserved {
   fill: transparent;
   white-space: pre;

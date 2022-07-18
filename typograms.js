@@ -1047,7 +1047,9 @@ function text(char, reserved) {
   const g = document.createElementNS(
       "http://www.w3.org/2000/svg", "g");
   const result = document.createElementNS(
-      "http://www.w3.org/2000/svg", "text");
+    "http://www.w3.org/2000/svg", "text");
+  //result.setAttribute("xml:space", "preserve");
+  //result.setAttributeNS("http://www.w3.org/XML/1998/namespace", "xml:space", "preserve");
   const value = document.createTextNode(char);
   result.appendChild(value);
   if (reserved) {
@@ -1070,9 +1072,9 @@ function render(diagram) {
     for (let x = 0; x < diagram[y].length; x++) {
       const char = diagram[y][x];
 
-      if (char == ' ' || char == '"') {
-        continue;
-      }
+      //if (char == ' ' || char == '"') {
+      //  continue;
+      //}
 
       let reserved = glyphs[char];
 

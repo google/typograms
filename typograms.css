@@ -25,6 +25,7 @@
   font-size: 3em;
   text-anchor: middle;
   alignment-baseline: central;
+  white-space: pre;
 }
 
 .debug[debug="false"] .reserved {

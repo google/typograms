@@ -18,24 +18,30 @@
            display: block;
        }
    }
+
+   .header a, .header a:visited, .header a:hover, .header a:active,
    .menu a, .menu a:visited, .menu a:hover, .menu a:active {
        color: inherit;
        text-decoration: inherit;
+   }
+
+   .menu a, .menu a:visited, .menu a:hover, .menu a:active {
        font-weight: bold;
        color: #999;
    }
+
    .menu ul {
        list-style: none;
    }
    .header {
        box-shadow: 0 2px 6px 0 rgb(0 0 0 / 12%), inset 0 -1px 0 0 #dadce0;
-       padding: 1em;
+       /** padding: 1em; **/
        position: fixed;
        width: 100%;
        top: 0;
        background-color: white;
        z-index: 1;
-       height: 32px;
+       /** height: 32px; **/
    }
    .body {
        margin: auto;
@@ -48,9 +54,17 @@
        outline: none;
        background-color: white;
    }
-   main {
+   .container, main {
        max-width: 740px;
        margin: auto;
+   }
+   .container {
+       padding: 1em;
+       font-size: 1.3125rem;
+       font-weight: 500;
+       line-height: 1.16667em;
+   }
+   main {
        margin-bottom: 4em;
        margin-top: 4em;
    }
@@ -66,6 +80,7 @@
 </head>
 
 <div class="header">
+  <div class="container"><a href="https://code.sgo.to">sgo.to</a></div>
 </div>
 <div class="body">
   <div class="menu">

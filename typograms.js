@@ -1072,9 +1072,9 @@ function render(diagram) {
     for (let x = 0; x < diagram[y].length; x++) {
       const char = diagram[y][x];
 
-      //if (char == ' ' || char == '"') {
-      //  continue;
-      //}
+      if (char == ' ' || char == '"') {
+        continue;
+      }
 
       let reserved = glyphs[char];
 

@@ -28,8 +28,12 @@
   white-space: pre;
 }
 
+.reserved {
+  fill: transparent;
+  white-space: pre;
+}
+
 .debug[debug="false"] .reserved {
-    fill: transparent;
 }
 
 .debug[debug="true"] line.grid {

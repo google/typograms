@@ -861,7 +861,9 @@ glyphs["v"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
     "http://www.w3.org/2000/svg", "polygon");
   arrow.setAttribute("points", "0,0 42,18 0,36");
   let reach = 36;
-  if (bottom == "_") {
+  if (bottom == " ") {
+    reach = 12;
+  } else if (bottom == "_") {
     reach += 18;
   } else if (bottom == "*" || bottom == "o" ||  bottom == "#") {
     reach -= 18;

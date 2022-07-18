@@ -33,7 +33,8 @@
   white-space: pre;
 }
 
-.debug[debug="false"] .reserved {
+.debug[debug="true"] .reserved {
+  fill: black;
 }
 
 .debug[debug="true"] line.grid {

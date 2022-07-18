@@ -28,7 +28,7 @@
 }
 
 .debug[debug="false"] .reserved {
-  display: none;
+    fill: transparent;
 }
 
 .debug[debug="true"] line.grid {

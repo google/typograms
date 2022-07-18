@@ -1086,16 +1086,16 @@ function render(diagram) {
         }
       }
 
-     const neighbors = around(diagram, [x, y]);
+      const neighbors = around(diagram, [x, y]);
 
-     if (char.match(/[A-Za-z0-9]/)) {
-       const [, right, , left] = neighbors;
-       str = str || (left.match(/[A-Za-z0-9]/) || right.match(/[A-Za-z0-9]/));
-     }
+      if (char.match(/[A-Za-z0-9]/)) {
+        const [, right, , left] = neighbors;
+        str = str || (left.match(/[A-Za-z0-9]/) || right.match(/[A-Za-z0-9]/));
+      }
 
-     reserved = reserved && !str;
+      reserved = reserved && !str;
 
-     if (reserved) {
+      if (reserved) {
         g.appendChild(glyphs[char](neighbors));
       }
 

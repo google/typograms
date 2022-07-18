@@ -1092,7 +1092,8 @@ function render(diagram) {
 
       if (char.match(/[A-Za-z0-9]/)) {
         const [, right, , left] = neighbors;
-        str = str || (left.match(/[A-Za-z0-9]/) || right.match(/[A-Za-z0-9]/));
+        // We special case "v", which is a down arrow, and also a text character.
+        str = str || (left.match(/[A-Za-uw-z0-9]/) || right.match(/[A-Za-uw-z0-9]/));
       }
 
       reserved = reserved && !str;

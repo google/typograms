@@ -122,10 +122,18 @@ glyphs["-"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
     ]);
 }
 
-glyphs["~"] = (around) => {
-  const line = glyphs["-"](around);
-  line.setAttribute("style", "stroke-dasharray: 3 9");
-  return line;
+glyphs["~"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, topLeft]) => {
+  const result = document.createElementNS(
+      "http://www.w3.org/2000/svg", "g");
+  const line = document.createElementNS(
+      "http://www.w3.org/2000/svg", "line");
+  line.setAttribute("x1", "9");
+  line.setAttribute("y1", "27");
+  line.setAttribute("x2", "24");
+  line.setAttribute("y2", "27");
+  line.setAttribute("class", "part");
+  result.appendChild(line);
+  return result;
 }
 
 glyphs["_"] = (around) => {
@@ -134,10 +142,39 @@ glyphs["_"] = (around) => {
   return line;
 }
 
-glyphs[":"] = (around) => {
-  const line = glyphs["|"](around);
-  line.setAttribute("style", "stroke-dasharray: 6 9");
-  return line;
+glyphs[":"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, topLeft]) => {
+  const result = document.createElementNS(
+      "http://www.w3.org/2000/svg", "g");
+  const line = document.createElementNS(
+      "http://www.w3.org/2000/svg", "line");
+  line.setAttribute("x1", "15");
+  line.setAttribute("y1", "0");
+  line.setAttribute("x2", "15");
+  line.setAttribute("y2", "60");
+  line.setAttribute("class", "part");
+  line.setAttribute("style", "stroke-dasharray: 15; stroke-dashoffset: 0;");
+  result.appendChild(line);
+  if (top == "+") {
+    const line = document.createElementNS(
+      "http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", "15");
+    line.setAttribute("y1", "-24");
+    line.setAttribute("x2", "15");
+    line.setAttribute("y2", "-15");
+    line.setAttribute("class", "part");
+    result.appendChild(line);
+  }
+  if (bottom == "+") {
+    const line = document.createElementNS(
+      "http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", "15");
+    line.setAttribute("y1", "60");
+    line.setAttribute("x2", "15");
+    line.setAttribute("y2", "78");
+    line.setAttribute("class", "part");
+    result.appendChild(line);
+  }
+  return result;
 }
 
 glyphs["="] = (around) => {
@@ -372,9 +409,9 @@ glyphs["+"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
   center.setAttribute("transform", "translate(-3 -3) translate(15 27)");
   result.appendChild(center);
   result.appendChild(cross([
-    ["*", "#", "|", "+", ":", ".", "`", "^"].includes(top),
+    ["*", "#", "|", "+", ".", "`", "^"].includes(top),
     ["*", "#", "-", "+", "~", ">", ".", "'", "`"].includes(right),
-    ["*", "#", "|", "+", ":", "'", "`", "v"].includes(bottom),
+    ["*", "#", "|", "+", "'", "`", "v"].includes(bottom),
     ["*", "#", "-", "+", "~", "<", ".", "'", "`"].includes(left),
     ["/", "*", "#"].includes(topRight),
     ["\\", "*", "#"].includes(bottomRight),

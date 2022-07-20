@@ -1181,6 +1181,138 @@ function create(script) {
 
   svg.setAttribute("viewBox", `${-padding} ${-padding} ${width * 30 + 2 * padding} ${height * 54 + 2 * padding}`);
   svg.setAttribute("class", "debug");
+
+  var style = document.createElementNS("http://www.w3.org/2000/svg", "style");
+  style.innerHTML = `
+.diagram {
+  display: block;
+}
+
+.diagram line, .diagram circle, .diagram rect {
+  stroke: black;
+}
+
+.diagram line {
+  stroke-width: 2;
+}
+
+.diagram circle {
+  r: 3.5;
+}
+
+.diagram rect {
+  width: 6px;
+  height: 6px;
+}
+
+.diagram text, .glyph, .debug text {
+  /** font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; **/
+  font-family: Iosevka Fixed, monospace;
+  font-size: 3em;
+  text-anchor: middle;
+  alignment-baseline: central;
+  white-space: pre;
+}
+
+.reserved {
+  fill: transparent;
+  white-space: pre;
+}
+
+.debug[debug="true"] .reserved {
+  fill: black;
+}
+
+.debug[debug="true"] line.grid {
+  stroke: black;
+  stroke-width: 0.2;
+  stroke-linecap: butt;
+  fill: black;
+  opacity: 1%;
+}
+
+polygon {
+  stroke-width: 0;
+}
+
+.debug[debug="true"] polygon.inner {
+  fill: black;
+  stroke: black;
+  opacity: 5%;
+}
+
+polygon {
+  stroke: black;
+  /** stroke-width: 0.2; **/
+  stroke-linecap: butt;
+  fill: black;
+}
+
+.debug[debug="true"] polygon,
+.debug[debug="true"] line.grid
+{
+  opacity: 10%;
+}
+
+.debug[debug="true"] polygon,
+.debug[debug="true"] path,
+.debug[debug="true"] circle
+{
+  opacity: 50%;
+}
+
+.debug[debug="true"] polygon {
+  fill: red;
+  stroke: red;
+}
+
+/**
+circle {
+  fill: black;
+}
+**/
+
+.debug[debug="true"] circle,
+.debug[debug="true"] path
+{
+  opacity: 50%;
+  fill: red;
+}
+
+.debug[debug="true"] circle {
+  stroke: red;
+}
+
+.debug[debug="true"] .inner {
+  stroke-width: 0.2;
+}
+
+line.part {
+  stroke-width: 6;
+  stroke-linecap: butt;
+  stroke: black;
+}
+
+.debug[debug="true"] line.part {
+  opacity: 50%;
+  stroke: red;
+}
+
+.debug[debug="true"] line.center {
+  stroke-width: 3;
+  stroke-linecap: butt;
+  opacity: 10%;
+  stroke: black;
+}
+
+text::selection {
+    fill: black;
+    background-color: #EEE;
+}
+  `;
+
+  svg.appendChild(style);
+  
   svg.appendChild(render(diagram));
   svg.appendChild(grid(width, height));
   return svg;

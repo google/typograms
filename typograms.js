@@ -403,21 +403,107 @@ glyphs["#"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
 glyphs["+"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, topLeft]) => {
   const result = document.createElementNS(
       "http://www.w3.org/2000/svg", "g");
-  const center = document.createElementNS(
-    "http://www.w3.org/2000/svg", "polygon");
-  center.setAttribute("points", "0,0 6,0 6,6 0,6");
-  center.setAttribute("transform", "translate(-3 -3) translate(15 27)");
-  result.appendChild(center);
+  const r = ["*", "#", "-", "+", "~", ">", ".", "'", "`"].includes(right);
+  const l = ["*", "#", "-", "+", "~", "<", ".", "'", "`"].includes(left);
+  const t = ["*", "#", "|", "+", ".", "`", "^"].includes(top);
+  const b = ["*", "#", "|", "+", "'", "`", "v"].includes(bottom);
+  const tR = ["/", "*", "#"].includes(topRight);
+  const bR = ["\\", "*", "#"].includes(bottomRight);
+  const tL = ["\\", "*", "#"].includes(topLeft);
+  const bL = ["/", "*", "#"].includes(bottomLeft);
   result.appendChild(cross([
-    ["*", "#", "|", "+", ".", "`", "^"].includes(top),
-    ["*", "#", "-", "+", "~", ">", ".", "'", "`"].includes(right),
-    ["*", "#", "|", "+", "'", "`", "v"].includes(bottom),
-    ["*", "#", "-", "+", "~", "<", ".", "'", "`"].includes(left),
-    ["/", "*", "#"].includes(topRight),
-    ["\\", "*", "#"].includes(bottomRight),
-    ["/", "*", "#"].includes(bottomLeft),
-    ["\\", "*", "#"].includes(topLeft)
-    ]));
+    t,
+    r,
+    b,
+    l,
+    tR,
+    bR,
+    bL,
+    tL
+  ]));
+
+  if ((l || r) && (b || t)) {
+    const center = document.createElementNS(
+      "http://www.w3.org/2000/svg", "polygon");
+    center.setAttribute("points", "0,0 6,0 6,6 0,6");
+    center.setAttribute("transform", "translate(-3 -3) translate(15 27)");
+    result.appendChild(center);
+  }
+  
+  if (tR || tL) {
+    const center = cross([
+      false, // top
+      false, // right
+      false, // bottom
+      false, // left
+      false, // topRight
+      tL, // bottomRight
+      tR, // bottomLeft
+      false, // topLeft
+    ]);
+    center.setAttribute("clip-path", "polygon(0 -3, 30 -3, 30 0, 0 0)");
+    result.appendChild(center);
+  }
+  if (bR || bL) {
+    const center = cross([
+      false, // top
+      false, // right
+      false, // bottom
+      false, // left
+      bL, // topRight
+      false, // bottomRight
+      false, // bottomLeft
+      bR, // topLeft
+    ]);
+    center.setAttribute("clip-path", "polygon(0 27, 15 27, 15 30, 0 30)");
+    result.appendChild(center);
+  }
+
+  if (bL || tL) {
+    const center = cross([
+      false, // top
+      false, // right
+      false, // bottom
+      false, // left
+      bL && bR, // topRight
+      tL && tR, // bottomRight
+      false, // bottomLeft
+      false, // topLeft
+    ]);
+    center.setAttribute("clip-path", "polygon(-3 0, 0 0, 0 54, -3 54)");
+    result.appendChild(center);
+  }
+
+  if (bR || tR) {
+    const center = cross([
+      false, // top
+      false, // right
+      false, // bottom
+      false, // left
+      false, // topRight
+      false, // bottomRight
+      tR && tL, // bottomLeft
+      bR && bL, // topLeft
+    ]);
+    //console.log(center);
+    center.setAttribute("clip-path", "polygon(15 0, 30 0, 30 54, 15 54)");
+    result.appendChild(center);
+  }
+
+  if (r || l) {
+    const center = cross([
+      false, // top
+      false, // right
+      false, // bottom
+      false, // left
+      r || bL, // topRight
+      tL, // bottomRight
+      tR, // bottomLeft
+      l || bR, // topLeft
+    ]);
+    center.setAttribute("clip-path", "polygon(-3 24, 30 24, 30 30, -3 30)");
+    result.appendChild(center);
+  }
   return result;
 }
 
@@ -1221,6 +1307,7 @@ function create(script) {
 
 .debug[debug="true"] .reserved {
   fill: black;
+  opacity: 0.5;
 }
 
 .debug[debug="true"] line.grid {

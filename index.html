@@ -1,8 +1,11 @@
 <head>
- <script src="typograms.js"></script>
- <link href="google-sans.css" media="screen" rel="stylesheet" type="text/css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/a11y-dark.min.css">
- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+  <script src="typograms.js"></script>
+ 
+ <!--
+  <link href="google-sans.css" media="screen" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/a11y-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+ -->
  <style>
    html, body, .header {
        margin: 0;
@@ -274,7 +277,7 @@
 .------------------------.
     </script>
 
-    <h2 id="architecture">Architecture</h2>
+<h2 id="architecture">Architecture</h2>
 
     <h3>Components</h3>
     
@@ -668,6 +671,33 @@ Cpu.Qon :~~~~~~~~~~~~~~~~.-----------
 
     <p>This is a list of constructions that are currently looking into supporting.</p>
 
+    <h2>UT8 Diagram Characters Are Off</h2>
+
+<script type="text/typogram">
+┌─────────────────────────────────┐       ┌─────────────────────────────────┐
+| ┌─────────────────────────────┐ |       | ┌─────────────────────────────┐ |
+| | "https://rp.example"        | |       | | "https://rp.example"        | |
+| └─────────────────────────────┘ |       | └─────────────────────────────┘ |
+| ┌─────────────────────────────┐ |       | ┌─────────────────────────────┐ |
+| |                             | |       | |                             | |
+| |   Welcome to my website!    | |       | |  Welcome to my website!     | |
+| |                             | |       | |                             | |
+| |                             | |       | |                             | |
+| +─────────────────────────────+ |       | +─────────────────────────────+ |
+| |       Choose an account     | |       | |    Sign-in to rp.example    | |
+| |   to sign-in to rp.example  | |       | |      with idp.example?      | |
+| |                             | |       | |                             | |
+| | ┌────┐                      | |       | | ┌────┐                      | |
+| | | :) |  John Doe            | |  ──►  | | | :) |  John Doe            | |
+| | └────┘  john@email.com      | |       | | └────┘  john@email.com      | |
+| | ┌────┐                      | |       | |                             | |
+| | | :] |  John Doe            | |       | | ┌─────────────────────────┐ | |
+| | └────┘  john.doe@work.com   | |       | | |    Continue as John     | | |
+| |                             | |       | | └─────────────────────────┘ | |
+| └─────────────────────────────┘ |       | └─────────────────────────────┘ |
+└─────────────────────────────────┘       └─────────────────────────────────┘
+</script>
+    
     <h2>Triangles connected without + aren't pointy</h2>
     <script type="text/typogram" zoom=3 grid>
  /
@@ -725,8 +755,8 @@ customElements.define("typo-gram", class Typogram extends HTMLElement {
     super();
   }
   connectedCallback() {
-    console.log("hello");
-    console.log(this.innerHTML);
+    //console.log("hello");
+    //console.log(this.innerHTML);
   }
 });
     </script>
@@ -740,7 +770,9 @@ customElements.define("typo-gram", class Typogram extends HTMLElement {
 <script>
 document.addEventListener('DOMContentLoaded', (event) => {
   document.querySelectorAll('pre code').forEach((el) => {
-    hljs.highlightElement(el);
+    //if (hljs) {
+    //  hljs.highlightElement(el);
+    //}
   });
 });
 </script>

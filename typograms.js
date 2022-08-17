@@ -411,6 +411,8 @@ glyphs["+"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
   const bR = ["\\", "*", "#"].includes(bottomRight);
   const tL = ["\\", "*", "#"].includes(topLeft);
   const bL = ["/", "*", "#"].includes(bottomLeft);
+
+  // cross
   result.appendChild(cross([
     t,
     r,
@@ -422,6 +424,7 @@ glyphs["+"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
     tL
   ]));
 
+  // center
   if ((l || r) && (b || t)) {
     const center = document.createElementNS(
       "http://www.w3.org/2000/svg", "polygon");
@@ -429,7 +432,8 @@ glyphs["+"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
     center.setAttribute("transform", "translate(-3 -3) translate(15 27)");
     result.appendChild(center);
   }
-  
+
+  // tip
   if (tR || tL) {
     const center = cross([
       false, // top
@@ -444,6 +448,7 @@ glyphs["+"] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
     center.setAttribute("clip-path", "polygon(0 -3, 30 -3, 30 0, 0 0)");
     result.appendChild(center);
   }
+
   if (bR || bL) {
     const center = cross([
       false, // top
@@ -1401,7 +1406,11 @@ text::selection {
   svg.appendChild(style);
   
   svg.appendChild(render(diagram));
-  svg.appendChild(grid(width, height));
+
+  if (debug) {
+    svg.appendChild(grid(width, height));
+  }
+
   return svg;
 }
 
@@ -1456,18 +1465,10 @@ document.addEventListener("DOMContentLoaded", function() {
     if (script.hasAttribute("disabled")) {
       continue;
     }
+    //setTimeout(() => {
     const svg = create(script);
     script.parentNode.insertBefore(svg, script.nextSibling);
-  }
-
-  // replace all of the <pre lang="typogram"> tags
-  for (const script of document.querySelectorAll("pre[lang='typogram'] code")) {
-    if (script.hasAttribute("disabled")) {
-      continue;
-    }
-    const svg = create(script);
-    script.parentNode.insertBefore(svg, script.nextSibling);
-    script.remove();
+    //}, 0);
   }
 });
 

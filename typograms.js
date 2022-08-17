@@ -517,7 +517,7 @@ glyphs["."] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
       "http://www.w3.org/2000/svg", "g");
 
   // top-right
-  if ((right == "-" || right == "+") && (bottom == "|" || bottom == "'" || bottom == "." || bottom == "+")) {
+  if ((right == "-" || right == "+") && (bottom == "|" || bottom == "'" || bottom == "`" || bottom == "+")) {
     const path = document.createElementNS(
         "http://www.w3.org/2000/svg", "path");
     path.setAttribute("d", `
@@ -532,7 +532,7 @@ glyphs["."] = ([top, right, bottom, left, topRight, bottomRight, bottomLeft, top
   }
 
   // top-left
-  if ((left == "-" || left == "+") && (bottom == "|" || bottom == "'" || bottom == "." || bottom == "+")) {
+  if ((left == "-" || left == "+") && (bottom == "|" || bottom == "'" || bottom == "`" || bottom == "+")) {
     const path = document.createElementNS(
         "http://www.w3.org/2000/svg", "path");
     path.setAttribute("d", `
@@ -1463,8 +1463,8 @@ function around(diagram, [x, y]) {
   if (y > 0 && x > 0) {
     topLeft = diagram[y - 1][x - 1] || " ";
   }
-  return [top, right, bottom, left, topRight, bottomRight, bottomLeft, topLeft]
-    .map((el) => alias[el] ? alias[el] : el);
+  return [top, right, bottom, left, topRight, bottomRight, bottomLeft, topLeft];
+  //.map((el) => alias[el] ? alias[el] : el);
 }
 
 document.addEventListener("DOMContentLoaded", function() {

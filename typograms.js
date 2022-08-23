@@ -1,3 +1,4 @@
+
 const ratio = 2;
 
 function grid(width, height) {

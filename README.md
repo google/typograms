@@ -15,6 +15,6 @@ produce diagrams faster).
 
 A comparison with related work is available below.
 
-A polyfill is available that allows you use to use it in browsers.
+A polyfill is available that allows you to use it in browsers.
 
 

@@ -2,7 +2,7 @@
 
 Typograms (short for typographic diagrams) is a lightweight image format
  (`text/typogram`) useful for defining simple diagrams in technical 
-documentation.
+documentation, originally developed [here](https://code.sgo.to/2022/06/20/typographic-diagrams.html).
 
 See it in action here:
 

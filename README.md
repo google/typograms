@@ -30,7 +30,7 @@ You can embed typograms into pages using the polyfill library:
 </body>
 ```
 
-A comparison with related work is available below.
+A comparison with related work is available [here](https://google.github.io/typograms/#related).
 
 A polyfill is available that allows you use to use it in browsers.
 

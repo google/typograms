@@ -1,12 +1,11 @@
 <head>
   <script src="typograms.js"></script>
  
- <!--
   <link href="google-sans.css" media="screen" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/a11y-dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
- -->
- <style>
+
+  <style>
    html, body, .header {
        margin: 0;
        padding: 0;
@@ -82,7 +81,7 @@
 </head>
 
 <div class="header">
-  <div class="container"><a href="https://code.sgo.to">sgo.to</a></div>
+  <div class="container"><a href="https://google.github.io/typograms/">Typograms</a></div>
 </div>
 <div class="body">
   <div class="menu">
@@ -139,7 +138,7 @@
     <pre>
       <code class="language-html">
 &lt;body&gt;
-  &lt;script src="https://code.sgo.to/typograms/typograms.js"&gt;&lt;/script&gt;
+  &lt;script src="https://google.github.io/typograms/typograms.js"&gt;&lt;/script&gt;
   &lt;script type="text/typogram"&gt;
 +----+
 |    |---> My first diagram!
@@ -150,25 +149,14 @@
     </pre>
 
     From there, you can <a href="https://github.com/samuelgoto/typograms">download</a> the library directly to serve yourself.
+
+    You can also use it as a command line tool or a node library:
+
+    https://github.com/google/typograms
     
     <h1 id="primitives">Primitives</h1>
 
-    <p>Typograms are composed of primitives and connectors that combine them.</p>
-
-    <p><a href="#pipes">Pipes</a>:</p>
-    <script type="text/typogram" zoom=2 grid>
-| - _ \ / : ~
-    </script>
-    <p><a href="#dots">Dots</a> and <a href="#arrows">Arrows</a>:</p>
-    <script type="text/typogram" zoom=2 grid>
-> ^ * o # v <
-    </script>    
-    <p>Connectors:</p>
-    <script type="text/typogram" zoom=2 grid>
-+--.   .-+->|
-|  |  / /
-'--' '-+
-    </script>
+    <p>Typograms are composed of primitives and connectors that combine them: pipes (<code>| - _ \ / : ~</code>), dots arrows (<code>> ^ * o # v < </code>) and Connectors (<code>+ . -</code>).</p>
     
     <p>By putting them together, you can form a lot of different <a href="#examples">diagrams</a>.</p>
     

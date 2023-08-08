@@ -32,6 +32,6 @@ You can embed typograms into pages using the polyfill library:
 
 A comparison with related work is available [here](https://google.github.io/typograms/#related).
 
-A polyfill is available that allows you use to use it in browsers.
+A polyfill is available that allows you to use it in browsers.
 
 

@@ -2,9 +2,7 @@
   "name": "typograms",
   "version": "0.0.1",
   "description": "A lightweight image format (text/typogram) useful for drawing simple ASCII diagrams in technical documentation",
-  "main": "main.js",
-  "scripts": {
-  },
+  "bin": "main.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/google/typograms.git"
@@ -21,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/google/typograms/issues"
   },
-  "homepage": "https://github.com/google/typograms#readme"
+  "homepage": "https://github.com/google/typograms#readme",
+  "dependencies": {
+    "yargs": "^17.7.2"
+  }
 }

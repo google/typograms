@@ -1468,18 +1468,5 @@ function around(diagram, [x, y]) {
   //.map((el) => alias[el] ? alias[el] : el);
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  // replace all of the <script type="text/typogram"> tags
-  for (const script of document.querySelectorAll("script[type='text/typogram']")) {
-    if (script.hasAttribute("disabled")) {
-      continue;
-    }
-    //setTimeout(() => {
-    const svg = create(script);
-    script.parentNode.insertBefore(svg, script.nextSibling);
-    //}, 0);
-  }
-});
-
-
+module.exports = create;
 

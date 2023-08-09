@@ -7,7 +7,10 @@ document.addEventListener("DOMContentLoaded", function() {
       continue;
     }
     //setTimeout(() => {
-    const svg = create(script);
+    const source = script.innerText;
+    const zoom = Number(script.getAttribute("zoom") || 0.3);
+    const debug = script.hasAttribute("grid");
+    const svg = create(source, zoom, debug);
     script.parentNode.insertBefore(svg, script.nextSibling);
     //}, 0);
   }

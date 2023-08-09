@@ -6,7 +6,8 @@
   "scripts": {
     "build": "browserify -p tinyify src/browser.js -o docs/typograms.js",
     "serve": "http-server docs",
-    "run": "npx . foobar"
+    "run": "npx . foobar",
+    "test": "mocha -w tests"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
   "dependencies": {
     "browserify": "^17.0.0",
     "http-server": "^14.1.1",
+    "mocha": "^10.2.0",
     "tinyify": "^4.0.0",
     "yargs": "^17.7.2"
   }

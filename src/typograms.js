@@ -1249,11 +1249,7 @@ function render(diagram) {
   return result;
 }
 
-function create(script) {
-  const source = script.innerText;
-  const zoom = Number(script.getAttribute("zoom") || 0.3);
-  const debug = script.hasAttribute("grid");
-
+function create(source, zoom, debug) {
   const diagram = source
     .split("\n")
     .map((line) => line.trimEnd().split(""));

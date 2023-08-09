@@ -17,7 +17,7 @@ easy to maintain, change, store and transmit), at the cost of expressivity
 (e.g. SVG is more expressive) and ergonomics (e.g. higher level tools
 produce diagrams faster).
 
-You can embed typograms into pages using the polyfill library: 
+You can embed typograms into pages using the JS rendering library: 
 
 ```html
 <body>
@@ -31,7 +31,5 @@ You can embed typograms into pages using the polyfill library:
 ```
 
 A comparison with related work is available [here](https://google.github.io/typograms/#related).
-
-A polyfill is available that allows you to use it in browsers.
 
 

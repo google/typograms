@@ -4,7 +4,7 @@
   "description": "A lightweight image format (text/typogram) useful for drawing simple ASCII diagrams in technical documentation",
   "bin": "main.js",
   "scripts": {
-    "build": "browserify src/typograms.js -o docs/typograms.js",
+    "build": "browserify -p tinyify src/browser.js -o docs/typograms.js",
     "serve": "http-server docs",
     "run": "npx . foobar"
   },
@@ -28,6 +28,7 @@
   "dependencies": {
     "browserify": "^17.0.0",
     "http-server": "^14.1.1",
+    "tinyify": "^4.0.0",
     "yargs": "^17.7.2"
   }
 }

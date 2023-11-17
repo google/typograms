@@ -52,7 +52,9 @@ describe("typograms", () => {
 
       if (primitives.includes(center)) {
         commands.push(center);
-      } else if (center == "+") {
+      }
+
+      if (center == "+" || center == "*" || center == "o") {
         if (left == "-") {
           commands.push("╴");
         }
@@ -315,6 +317,186 @@ describe("typograms", () => {
       " | "
     ].join("\n")).paint(1, 1)).equalsTo(
       ["╴", "╶", "╵", "╷"]
+    );
+  });
+
+  it("* right", () => {
+    assertThat(new Grid("*-").paint(0, 0)).equalsTo(
+      ["*", "╶"]
+    );
+  });
+
+  it("* left", () => {
+    assertThat(new Grid("-*").paint(1, 0)).equalsTo(
+      ["*", "╴"]
+    );
+  });
+
+  it("* down", () => {
+    assertThat(new Grid("*\n|").paint(0, 0)).equalsTo(
+      ["*", "╷"]
+    );
+  });
+
+  it("* up", () => {
+    assertThat(new Grid("|\n*").paint(0, 1)).equalsTo(
+      ["*", "╵"]
+    );
+  });
+
+  it("* top-left corner", () => {
+    assertThat(new Grid([
+      "*-",
+      "| "
+    ].join("\n")).paint(0, 0)).equalsTo(
+      ["*", "╶", "╷"]
+    );
+  });
+
+  it("* top-right corner", () => {
+    assertThat(new Grid([
+      "-*",
+      " |"
+    ].join("\n")).paint(1, 0)).equalsTo(
+      ["*", "╴", "╷"]
+    );
+  });
+
+  it("* bottom-left corner", () => {
+    assertThat(new Grid([
+      "|",
+      "*-"
+    ].join("\n")).paint(0, 1)).equalsTo(
+      ["*", "╶", "╵"]
+    );
+  });
+
+  it("* bottom-left corner", () => {
+    assertThat(new Grid([
+      " |",
+      "-*"
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["*", "╴", "╵"]
+    );
+  });
+
+  it("* top-bottom-right corner", () => {
+    assertThat(new Grid([
+      "| ",
+      "*-",
+      "| "
+    ].join("\n")).paint(0, 1)).equalsTo(
+      ["*", "╶", "╵", "╷"]
+    );
+  });
+
+  it("* top-bottom-left corner", () => {
+    assertThat(new Grid([
+      " |",
+      "-*",
+      " |"
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["*", "╴", "╵", "╷"]
+    );
+  });
+
+  it("* top-bottom-right-left corner", () => {
+    assertThat(new Grid([
+      " | ",
+      "-*-",
+      " | "
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["*", "╴", "╶", "╵", "╷"]
+    );
+  });
+
+  it("o right", () => {
+    assertThat(new Grid("o-").paint(0, 0)).equalsTo(
+      ["o", "╶"]
+    );
+  });
+
+  it("o left", () => {
+    assertThat(new Grid("-o").paint(1, 0)).equalsTo(
+      ["o", "╴"]
+    );
+  });
+
+  it("o down", () => {
+    assertThat(new Grid("o\n|").paint(0, 0)).equalsTo(
+      ["o", "╷"]
+    );
+  });
+
+  it("o up", () => {
+    assertThat(new Grid("|\no").paint(0, 1)).equalsTo(
+      ["o", "╵"]
+    );
+  });
+
+  it("o top-left corner", () => {
+    assertThat(new Grid([
+      "o-",
+      "| "
+    ].join("\n")).paint(0, 0)).equalsTo(
+      ["o", "╶", "╷"]
+    );
+  });
+
+  it("o top-right corner", () => {
+    assertThat(new Grid([
+      "-o",
+      " |"
+    ].join("\n")).paint(1, 0)).equalsTo(
+      ["o", "╴", "╷"]
+    );
+  });
+
+  it("o bottom-left corner", () => {
+    assertThat(new Grid([
+      "|",
+      "o-"
+    ].join("\n")).paint(0, 1)).equalsTo(
+      ["o", "╶", "╵"]
+    );
+  });
+
+  it("o bottom-left corner", () => {
+    assertThat(new Grid([
+      " |",
+      "-o"
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["o", "╴", "╵"]
+    );
+  });
+
+  it("o top-bottom-right corner", () => {
+    assertThat(new Grid([
+      "| ",
+      "o-",
+      "| "
+    ].join("\n")).paint(0, 1)).equalsTo(
+      ["o", "╶", "╵", "╷"]
+    );
+  });
+
+  it("o top-bottom-left corner", () => {
+    assertThat(new Grid([
+      " |",
+      "-o",
+      " |"
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["o", "╴", "╵", "╷"]
+    );
+  });
+
+  it("o top-bottom-right-left corner", () => {
+    assertThat(new Grid([
+      " | ",
+      "-o-",
+      " | "
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["o", "╴", "╶", "╵", "╷"]
     );
   });
 

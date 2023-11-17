@@ -220,9 +220,45 @@ describe("typograms", () => {
     );
   });
 
-  it("cross down", () => {
+  it("cross up", () => {
     assertThat(new Grid("|\n+").paint(0, 1)).equalsTo(
       ["╵"]
+    );
+  });
+
+  it("top-left corner", () => {
+    assertThat(new Grid([
+      "+-",
+      "| "
+    ].join("\n")).paint(0, 0)).equalsTo(
+      ["╶", "╷"]
+    );
+  });
+
+  it("top-right corner", () => {
+    assertThat(new Grid([
+      "-+",
+      " |"
+    ].join("\n")).paint(1, 0)).equalsTo(
+      ["╴", "╷"]
+    );
+  });
+
+  it("bottom-left corner", () => {
+    assertThat(new Grid([
+      "|",
+      "+-"
+    ].join("\n")).paint(0, 1)).equalsTo(
+      ["╶", "╵"]
+    );
+  });
+
+  it("bottom-left corner", () => {
+    assertThat(new Grid([
+      " |",
+      "-+"
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["╴", "╵"]
     );
   });
 

@@ -42,28 +42,45 @@ describe("typograms", () => {
       const commands = [];
       const subgrid = this.subgrid(x, y);
 
+      const center = subgrid[1][1];
+      const left = subgrid[1][0];
+      const right = subgrid[1][2];
+      const top = subgrid[0][1];
+      const bottom = subgrid[2][1];
+      
       const primitives = ["*", "o", "|", "-"];
 
-      if (primitives.includes(subgrid[1][1])) {
-        commands.push(subgrid[1][1]);
-      }
-
-      if (subgrid[1][1] == "+") {
-        // left
-        if (subgrid[1][0] == "-") {
+      if (primitives.includes(center)) {
+        commands.push(center);
+      } else if (center == "+") {
+        if (left == "-") {
           commands.push("╴");
         }
-        // right
-        if (subgrid[1][2] == "-") {
+        if (right == "-") {
           commands.push("╶");
         }
-        // top
-        if (subgrid[0][1] == "|") {
+        if (top == "|") {
           commands.push("╵");
         }
-        // down
-        if (subgrid[2][1] == "|") {
+        if (bottom == "|") {
           commands.push("╷");
+        }
+      } else if (subgrid[1][1] == ".") {
+        // top-left rounded corner
+        if (right == "-" && bottom == "|") {
+          commands.push("╭");
+        }
+        // top-right rounded corner
+        if (left == "-" && bottom == "|") {
+          commands.push("╮");
+        }
+        // bottom-left rounded corner
+        if (right == "-" && top == "|") {
+          commands.push("╰");
+        }
+        // bottom-right rounded corner
+        if (left == "-" && top == "|") {
+          commands.push("╯");
         }
       }
       
@@ -181,22 +198,31 @@ describe("typograms", () => {
     ]);
   });
 
-  it("primitives", () => {
+  it("*", () => {
     assertThat(new Grid("*").paint(0, 0)).equalsTo(
       ["*"]
     );    
+  });
+  
+  it("o", () => {
     assertThat(new Grid("o").paint(0, 0)).equalsTo(
       ["o"]
     );    
+  });
+
+  it("|", () => {
     assertThat(new Grid("|").paint(0, 0)).equalsTo(
       ["|"]
     );    
+  });
+
+  it("-", () => {
     assertThat(new Grid("-").paint(0, 0)).equalsTo(
       ["-"]
     );    
   });
 
-  it("cross empty", () => {
+  it("+", () => {
     assertThat(new Grid("+").paint(0, 0)).equalsTo(
       []
     );    
@@ -259,6 +285,102 @@ describe("typograms", () => {
       "-+"
     ].join("\n")).paint(1, 1)).equalsTo(
       ["╴", "╵"]
+    );
+  });
+
+  it("top-bottom-right corner", () => {
+    assertThat(new Grid([
+      "| ",
+      "+-",
+      "| "
+    ].join("\n")).paint(0, 1)).equalsTo(
+      ["╶", "╵", "╷"]
+    );
+  });
+
+  it("top-bottom-left corner", () => {
+    assertThat(new Grid([
+      " |",
+      "-+",
+      " |"
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["╴", "╵", "╷"]
+    );
+  });
+
+  it("top-bottom-right-left corner", () => {
+    assertThat(new Grid([
+      " | ",
+      "-+-",
+      " | "
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["╴", "╶", "╵", "╷"]
+    );
+  });
+
+  it("top-left corner", () => {
+    assertThat(new Grid([
+      ".-",
+      "| "
+    ].join("\n")).paint(0, 0)).equalsTo(
+      ["╭"]
+    );
+  });
+
+  it("top-right corner", () => {
+    assertThat(new Grid([
+      "-.",
+      " |"
+    ].join("\n")).paint(1, 0)).equalsTo(
+      ["╮"]
+    );
+  });
+
+  it("bottom-left corner", () => {
+    assertThat(new Grid([
+      "|",
+      ".-"
+    ].join("\n")).paint(0, 1)).equalsTo(
+      ["╰"]
+    );
+  });
+
+  it("bottom-left corner", () => {
+    assertThat(new Grid([
+      " |",
+      "-."
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["╯"]
+    );
+  });
+
+  it("top-bottom-right corner", () => {
+    assertThat(new Grid([
+      "| ",
+      ".-",
+      "| "
+    ].join("\n")).paint(0, 1)).equalsTo(
+      ["╭", "╰"]
+    );
+  });
+
+  it("top-bottom-left corner", () => {
+    assertThat(new Grid([
+      " |",
+      "-.",
+      " |"
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["╮", "╯"]
+    );
+  });
+
+  it("top-bottom-right-left corner", () => {
+    assertThat(new Grid([
+      " | ",
+      "-.-",
+      " | "
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["╭", "╮", "╰", "╯"]
     );
   });
 

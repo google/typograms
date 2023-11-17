@@ -48,13 +48,19 @@ describe("typograms", () => {
       const top = subgrid[0][1];
       const bottom = subgrid[2][1];
       
-      const primitives = ["*", "o", "|", "-"];
+      const primitives = [
+        // endings
+        "*", "o", "#",
+        // pipes
+        "|", "-"
+      ];
 
       if (primitives.includes(center)) {
         commands.push(center);
       }
 
-      if (center == "+" || center == "*" || center == "o") {
+      // connectors and endings
+      if (center == "+" || center == "*" || center == "o" || center == "#") {
         if (left == "-") {
           commands.push("╴");
         }
@@ -209,6 +215,12 @@ describe("typograms", () => {
   it("o", () => {
     assertThat(new Grid("o").paint(0, 0)).equalsTo(
       ["o"]
+    );    
+  });
+
+  it("#", () => {
+    assertThat(new Grid("#").paint(0, 0)).equalsTo(
+      ["#"]
     );    
   });
 
@@ -497,6 +509,96 @@ describe("typograms", () => {
       " | "
     ].join("\n")).paint(1, 1)).equalsTo(
       ["o", "╴", "╶", "╵", "╷"]
+    );
+  });
+
+  it("# right", () => {
+    assertThat(new Grid("#-").paint(0, 0)).equalsTo(
+      ["#", "╶"]
+    );
+  });
+
+  it("# left", () => {
+    assertThat(new Grid("-#").paint(1, 0)).equalsTo(
+      ["#", "╴"]
+    );
+  });
+
+  it("# down", () => {
+    assertThat(new Grid("#\n|").paint(0, 0)).equalsTo(
+      ["#", "╷"]
+    );
+  });
+
+  it("# up", () => {
+    assertThat(new Grid("|\n#").paint(0, 1)).equalsTo(
+      ["#", "╵"]
+    );
+  });
+
+  it("# top-left corner", () => {
+    assertThat(new Grid([
+      "#-",
+      "| "
+    ].join("\n")).paint(0, 0)).equalsTo(
+      ["#", "╶", "╷"]
+    );
+  });
+
+  it("# top-right corner", () => {
+    assertThat(new Grid([
+      "-#",
+      " |"
+    ].join("\n")).paint(1, 0)).equalsTo(
+      ["#", "╴", "╷"]
+    );
+  });
+
+  it("# bottom-left corner", () => {
+    assertThat(new Grid([
+      "|",
+      "#-"
+    ].join("\n")).paint(0, 1)).equalsTo(
+      ["#", "╶", "╵"]
+    );
+  });
+
+  it("# bottom-left corner", () => {
+    assertThat(new Grid([
+      " |",
+      "-#"
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["#", "╴", "╵"]
+    );
+  });
+
+  it("# top-bottom-right corner", () => {
+    assertThat(new Grid([
+      "| ",
+      "#-",
+      "| "
+    ].join("\n")).paint(0, 1)).equalsTo(
+      ["#", "╶", "╵", "╷"]
+    );
+  });
+
+  it("# top-bottom-left corner", () => {
+    assertThat(new Grid([
+      " |",
+      "-#",
+      " |"
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["#", "╴", "╵", "╷"]
+    );
+  });
+
+  it("# top-bottom-right-left corner", () => {
+    assertThat(new Grid([
+      " | ",
+      "-#-",
+      " | "
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["#", "╴", "╶", "╵", "╷"]
     );
   });
 

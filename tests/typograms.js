@@ -32,13 +32,54 @@ describe("typograms", () => {
         return undefined;
       }
       return [
-        this.get(x - 1, y - 1) || ' ', this.get(x, y - 1) || ' ', this.get(x + 1, y - 1) || ' ',
-        this.get(x - 1, y) || ' ', this.get(x, y) || ' ', this.get(x + 1, y) || ' ',
-        this.get(x - 1, y + 1) || ' ', this.get(x, y + 1) || ' ', this.get(x + 1, y + 1) || ' ',
+        [this.get(x - 1, y - 1) || ' ', this.get(x, y - 1) || ' ', this.get(x + 1, y - 1) || ' '],
+        [this.get(x - 1, y) || ' ', this.get(x, y) || ' ', this.get(x + 1, y) || ' '],
+        [this.get(x - 1, y + 1) || ' ', this.get(x, y + 1) || ' ', this.get(x + 1, y + 1) || ' '],
       ];
     }
 
+    paint(x, y) {
+      const commands = [];
+      const subgrid = this.subgrid(x, y);
+
+      const primitives = ["*", "o", "|", "-"];
+
+      if (primitives.includes(subgrid[1][1])) {
+        commands.push(subgrid[1][1]);
+      }
+
+      if (subgrid[1][1] == "+") {
+        // left
+        if (subgrid[1][0] == "-") {
+          commands.push("╴");
+        }
+        // right
+        if (subgrid[1][2] == "-") {
+          commands.push("╶");
+        }
+        // top
+        if (subgrid[0][1] == "|") {
+          commands.push("╵");
+        }
+        // down
+        if (subgrid[2][1] == "|") {
+          commands.push("╷");
+        }
+      }
+      
+      return commands;
+    }
     
+    go() {
+      const result = [];
+      for (let y = 0; y < this.height; y++) {
+        const row = [];
+        result.push(row);
+        for (let x = 0; x < this.rows[y].length; x++) {
+        }
+      }
+      return result;
+    }
   }
 
   it("parser", () => {
@@ -90,55 +131,101 @@ describe("typograms", () => {
     assertThat(new Grid("").subgrid(0, 0)).equalsTo(undefined);
     
     assertThat(new Grid("a").subgrid(0, 0)).equalsTo([
-      ' ', ' ', ' ',
-      ' ', 'a', ' ',
-      ' ', ' ', ' '
+      [' ', ' ', ' '],
+      [' ', 'a', ' '],
+      [' ', ' ', ' '],
     ]);
 
+
     assertThat(new Grid("ab").subgrid(0, 0)).equalsTo([
-      ' ', ' ', ' ',
-      ' ', 'a', 'b',
-      ' ', ' ', ' '      
+      [' ', ' ', ' '],
+      [' ', 'a', 'b'],
+      [' ', ' ', ' '],
     ]);
     assertThat(new Grid("ab").subgrid(1, 0)).equalsTo([
-      ' ', ' ', ' ',
-      'a', 'b', ' ',
-      ' ', ' ', ' '      
+      [' ', ' ', ' '],
+      ['a', 'b', ' '],
+      [' ', ' ', ' '],
     ]);
 
     assertThat(new Grid("a\nb").subgrid(0, 0)).equalsTo([
-      ' ', ' ', ' ',
-      ' ', 'a', ' ',
-      ' ', 'b', ' '      
+      [' ', ' ', ' '],
+      [' ', 'a', ' '],
+      [' ', 'b', ' '],
     ]);
     assertThat(new Grid("a\nb").subgrid(0, 1)).equalsTo([
-      ' ', 'a', ' ',
-      ' ', 'b', ' ',
-      ' ', ' ', ' '      
+      [' ', 'a', ' '],
+      [' ', 'b', ' '],
+      [' ', ' ', ' '],
     ]);
 
     assertThat(new Grid("ab\nc").subgrid(0, 0)).equalsTo([
-      ' ', ' ', ' ',
-      ' ', 'a', 'b',
-      ' ', 'c', ' ',
+      [' ', ' ', ' '],
+      [' ', 'a', 'b'],
+      [' ', 'c', ' '],
     ]);
     assertThat(new Grid("ab\nc").subgrid(1, 0)).equalsTo([
-      ' ', ' ', ' ',
-      'a', 'b', ' ',
-      'c', ' ', ' ',
+      [' ', ' ', ' '],
+      ['a', 'b', ' '],
+      ['c', ' ', ' '],
     ]);
     assertThat(new Grid("ab\nc").subgrid(0, 1)).equalsTo([
-      ' ', 'a', 'b',
-      ' ', 'c', ' ',
-      ' ', ' ', ' ',
+      [' ', 'a', 'b'],
+      [' ', 'c', ' '],
+      [' ', ' ', ' '],
     ]);
     assertThat(new Grid("ab\nc").subgrid(1, 1)).equalsTo([
-      'a', 'b', ' ',
-      'c', ' ', ' ',
-      ' ', ' ', ' ',
+      ['a', 'b', ' '],
+      ['c', ' ', ' '],
+      [' ', ' ', ' '],
     ]);
   });
-  
+
+  it("primitives", () => {
+    assertThat(new Grid("*").paint(0, 0)).equalsTo(
+      ["*"]
+    );    
+    assertThat(new Grid("o").paint(0, 0)).equalsTo(
+      ["o"]
+    );    
+    assertThat(new Grid("|").paint(0, 0)).equalsTo(
+      ["|"]
+    );    
+    assertThat(new Grid("-").paint(0, 0)).equalsTo(
+      ["-"]
+    );    
+  });
+
+  it("cross empty", () => {
+    assertThat(new Grid("+").paint(0, 0)).equalsTo(
+      []
+    );    
+  });
+
+  it("cross right", () => {
+    assertThat(new Grid("+-").paint(0, 0)).equalsTo(
+      ["╶"]
+    );
+  });
+
+  it("cross left", () => {
+    assertThat(new Grid("-+").paint(1, 0)).equalsTo(
+      ["╴"]
+    );
+  });
+
+  it("cross down", () => {
+    assertThat(new Grid("+\n|").paint(0, 0)).equalsTo(
+      ["╷"]
+    );
+  });
+
+  it("cross down", () => {
+    assertThat(new Grid("|\n+").paint(0, 1)).equalsTo(
+      ["╵"]
+    );
+  });
+
   function assertThat(a) {
     return {
       equalsTo(b) {

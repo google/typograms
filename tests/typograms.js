@@ -108,6 +108,18 @@ describe("typograms", () => {
         if (left == "-" && top == "|") {
           commands.push("╯");
         }
+        if (bottom_left == "/" && bottom_right == "\\") {
+          commands.push("⌒b");
+        }
+        if (top_left == "\\" && top_right == "/") {
+          commands.push("⌒t");
+        }
+        if (top_right == "/" && bottom_right == "\\") {
+          commands.push("⌒r");
+        }
+        if (top_left == "\\" && bottom_left == "/") {
+          commands.push("⌒l");
+        }
       }
       
       return commands;
@@ -781,6 +793,91 @@ describe("typograms", () => {
       ["╭", "╮", "╰", "╯"]
     );
   });
+  
+  it("dot cross top-right", () => {
+    assertThat(new Grid([
+      " /",
+      ". "
+    ].join("\n")).paint(0, 1)).equalsTo(
+      []
+    );
+  });
+  
+  it("dot cross top-left", () => {
+    assertThat(new Grid([
+      "\\ ",
+       " ."
+    ].join("\n")).paint(1, 1)).equalsTo(
+      []
+    );
+  });
+  
+  it("dot bottom-right", () => {
+    assertThat(new Grid([
+      ". ",
+      " \\"
+    ].join("\n")).paint(0, 0)).equalsTo(
+      []
+    );
+  });
+  
+  it("dot bottom-left", () => {
+    assertThat(new Grid([
+      " .",
+      "/ "
+    ].join("\n")).paint(1, 0)).equalsTo(
+      []
+    );
+  });
+
+  it("dot top corner", () => {
+    assertThat(new Grid([
+      " .",
+      "/ \\"
+    ].join("\n")).paint(1, 0)).equalsTo(
+      ["⌒b"]
+    );
+  });
+
+  it("dot bottom corner", () => {
+    assertThat(new Grid([
+      "\\ /",
+       " . "
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["⌒t"]
+    );
+  });
+
+  it("dot right corner", () => {
+    assertThat(new Grid([
+      "  /",
+      " . ",
+      "  \\"
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["⌒r"]
+    );
+  });
+
+  it("cross left corner", () => {
+    assertThat(new Grid([
+      "\\",
+      " .",
+      "/ "
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["⌒l"]
+    );
+  });
+
+  it("dot diagonal corner", () => {
+    assertThat(new Grid([
+     "\\ /",
+      " .",
+      "/ \\"
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["⌒b", "⌒t", "⌒r", "⌒l"]
+    );
+  });
+
 
   function assertThat(a) {
     return {

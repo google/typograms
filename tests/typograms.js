@@ -46,13 +46,19 @@ describe("typograms", () => {
       const left = subgrid[1][0];
       const right = subgrid[1][2];
       const top = subgrid[0][1];
+      const top_right = subgrid[0][2];
+      const top_left = subgrid[0][0];
       const bottom = subgrid[2][1];
+      const bottom_right = subgrid[2][2];
+      const bottom_left = subgrid[2][0];
       
       const primitives = [
         // endings
         "*", "o", "#",
         // pipes
-        "|", "-"
+        "|", "-",
+        // diagonals
+        "/", "\\"
       ];
 
       if (primitives.includes(center)) {
@@ -72,6 +78,18 @@ describe("typograms", () => {
         }
         if (bottom == "|") {
           commands.push("╷");
+        }
+        if (top_right == "/") {
+          commands.push("/t");
+        }
+        if (top_left == "\\") {
+          commands.push("\\t");
+        }
+        if (bottom_right == "\\") {
+          commands.push("\\b");
+        }
+        if (bottom_left == "/") {
+          commands.push("/b");
         }
       } else if (subgrid[1][1] == ".") {
         // top-left rounded corner
@@ -236,6 +254,18 @@ describe("typograms", () => {
     );    
   });
 
+  it("/", () => {
+    assertThat(new Grid("/").paint(0, 0)).equalsTo(
+      ["/"]
+    );    
+  });
+
+  it("\\", () => {
+    assertThat(new Grid("\\").paint(0, 0)).equalsTo(
+      ["\\"]
+    );    
+  });
+
   it("+", () => {
     assertThat(new Grid("+").paint(0, 0)).equalsTo(
       []
@@ -263,6 +293,90 @@ describe("typograms", () => {
   it("cross up", () => {
     assertThat(new Grid("|\n+").paint(0, 1)).equalsTo(
       ["╵"]
+    );
+  });
+
+  it("cross top-right", () => {
+    assertThat(new Grid([
+      " /",
+      "+ "
+    ].join("\n")).paint(0, 1)).equalsTo(
+      ["/t"]
+    );
+  });
+  
+  it("cross top-left", () => {
+    assertThat(new Grid([
+      "\\ ",
+       " +"
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["\\t"]
+    );
+  });
+  
+  it("cross bottom-right", () => {
+    assertThat(new Grid([
+      "+ ",
+      " \\"
+    ].join("\n")).paint(0, 0)).equalsTo(
+      ["\\b"]
+    );
+  });
+  
+  it("cross bottom-left", () => {
+    assertThat(new Grid([
+      " +",
+      "/ "
+    ].join("\n")).paint(1, 0)).equalsTo(
+      ["/b"]
+    );
+  });
+
+  it("cross top corner", () => {
+    assertThat(new Grid([
+      " +",
+      "/ \\"
+    ].join("\n")).paint(1, 0)).equalsTo(
+      ["\\b", "/b"]
+    );
+  });
+
+  it("cross bottom corner", () => {
+    assertThat(new Grid([
+      "\\ /",
+       " + "
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["/t", "\\t"]
+    );
+  });
+
+  it("cross right corner", () => {
+    assertThat(new Grid([
+      "  /",
+      " + ",
+      "  \\"
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["/t", "\\b"]
+    );
+  });
+
+  it("cross left corner", () => {
+    assertThat(new Grid([
+      "\\",
+      " +",
+      "/ "
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["\\t", "/b", ]
+    );
+  });
+
+  it("cross diagonal corner", () => {
+    assertThat(new Grid([
+     "\\ /",
+      " +",
+      "/ \\"
+    ].join("\n")).paint(1, 1)).equalsTo(
+      ["/t", "\\t", "\\b", "/b"]
     );
   });
 
